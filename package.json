@@ -1,0 +1,25 @@
+{
+  "name": "hashavshevet-mesh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "WIZ_AUTH_TOKEN='blablablabla' WIZ_URL='lb11.wizcloud.co.il' mesh serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilgardosh/hashavshevet-mesh.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gilgardosh/hashavshevet-mesh/issues"
+  },
+  "homepage": "https://github.com/gilgardosh/hashavshevet-mesh#readme",
+  "dependencies": {
+    "@graphql-mesh/cli": "0.29.11",
+    "@graphql-mesh/json-schema": "0.15.0-alpha-32c9509f5.0",
+    "graphql": "15.5.0"
+  }
+}

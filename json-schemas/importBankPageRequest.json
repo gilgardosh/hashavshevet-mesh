@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rows"],
+  "properties": {
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["AccountKey", "CreditDebit", "DatF", "SuF"],
+        "properties": {
+          "AccountKey": {
+            "type": "string"
+          },
+          "CreditDebit": {
+            "type": "integer",
+            "enum": [0, 1]
+          },
+          "DatF": {
+            "type": "string"
+          },
+          "Details": {
+            "type": "string"
+          },
+          "Reference": {
+            "type": "integer"
+          },
+          "SuF": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

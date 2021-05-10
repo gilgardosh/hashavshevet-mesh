@@ -1,0 +1,23 @@
+sources:
+  - name: Hashavshevet
+    handler:
+      jsonSchema:
+        baseUrl: https://${WIZ_URL}/
+        operations:
+          - type: Mutation
+            field: importBankPageResponse
+            path: BankPagesApi/importBankPage
+            method: POST
+            operationHeaders:
+              Authorization: Bearer ${WIZ_AUTH_TOKEN}
+              host: ${WIZ_URL}
+            requestSchema: ./json-schemas/importBankPageRequest.json
+            responseSchema: ./json-schemas/importBankPageResponse.json
+          - type: Query
+            field: getCompanies
+            path: CompanyListToTokenApi/TokenCompanies
+            method: POST
+            operationHeaders:
+              Authorization: Bearer ${WIZ_AUTH_TOKEN}
+              host: ${WIZ_URL}
+            responseSchema: ./json-schemas/getCompaniesResponse.json
