@@ -5,7 +5,7 @@ sources:
         baseUrl: https://${WIZ_URL}/
         operations:
           - type: Mutation
-            field: importBankPageResponse
+            field: importBankPage
             path: BankPagesApi/importBankPage
             method: POST
             operationHeaders:
