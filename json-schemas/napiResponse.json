@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["data", "session"],
+  "properties": {
+    "data": {
+      "type": "array"
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [""],
+      "properties": {
+        "branch": {
+          "type": "integer"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "company_id": {
+          "type": "integer"
+        },
+        "company_name": {
+          "type": "string"
+        },
+        "use_name": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "integer"
+        },
+        "wizcomp_no": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

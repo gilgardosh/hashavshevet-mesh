@@ -27,3 +27,8 @@ sources:
             path: /jtransApi/newBatch
             method: POST
             responseSchema: ./json-schemas/newBatchResponse.json
+          - type: Query
+            field: napi
+            path: /api/napi
+            method: POST
+            responseSchema: ./json-schemas/napiResponse.json            
