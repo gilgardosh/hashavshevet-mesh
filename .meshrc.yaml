@@ -2,14 +2,12 @@ sources:
   - name: Hashavshevet
     handler:
       jsonSchema:
-        baseUrl: "https://${WIZ_URL}"
+        baseUrl: "https://${WIZ_URL}/"
         operationHeaders:
           Authorization: "Bearer ${WIZ_AUTH_TOKEN}"
           host: "${WIZ_URL}"
-          content-type: "application/json"
-
-        errorMessageField: status
-        
+          Content-Type: application/x-www-form-urlencoded
+          Accept: application/json
         operations:
           - type: Mutation
             field: importBankPage
@@ -32,3 +30,6 @@ sources:
             path: /api/napi
             method: POST
             responseSchema: ./json-schemas/napiResponse.json            
+serve:
+  browser: false
+  exampleQuery: ./example-queries/*.graphql

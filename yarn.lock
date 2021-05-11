@@ -576,10 +576,10 @@
     "@types/lru-cache" "5.1.0"
     lru-cache "6.0.0"
 
-"@graphql-mesh/cli@0.29.13-alpha-836232fb3.0":
-  version "0.29.13-alpha-836232fb3.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.29.13-alpha-836232fb3.0.tgz#57893dc5748949527f8b7b48e0692d734488a7e0"
-  integrity sha512-TDxFEwpEeJVU8g0GP2V48mmtms1T87nft73nad4CnOOu/Ig3afaXXcYp6Voo6KhZ7xcHQK+8Du8F+1X2TQf2mA==
+"@graphql-mesh/cli@0.29.13-alpha-ff7a281e4.0":
+  version "0.29.13-alpha-ff7a281e4.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.29.13-alpha-ff7a281e4.0.tgz#77c928c9f775d6cedbbba13a48c7ab9d5761f180"
+  integrity sha512-nbkxNLu44vL/X9u28na6MnEAl5QY6p4LXnOpeWY2CqWg1Str45lp9uJvxvWwRxWcRC/Kkjk0/Lp89scn/3YJmQ==
   dependencies:
     "@graphql-codegen/core" "1.17.9"
     "@graphql-codegen/typescript" "1.22.0"
@@ -634,10 +634,10 @@
     lodash "4.17.21"
     param-case "3.0.4"
 
-"@graphql-mesh/json-schema@0.15.0-alpha-836232fb3.0":
-  version "0.15.0-alpha-836232fb3.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.15.0-alpha-836232fb3.0.tgz#d58e265dc39ac7aeba6dda1cb7e742471794a466"
-  integrity sha512-306pMRdgcBJbBOk8e8zwQ2gYMDOWjauc+BVas9Nfy5Uk9pD6N6pYn4TWZzJ23vhVX7XiHEnbwVX5j0BDV6x2UQ==
+"@graphql-mesh/json-schema@0.15.0-alpha-ff7a281e4.0":
+  version "0.15.0-alpha-ff7a281e4.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.15.0-alpha-ff7a281e4.0.tgz#f9052e86673e56d7e2988f73e4ea8dd0a3b994ec"
+  integrity sha512-RuBza7217GcUD28b5UQXabTnySXeYAGh1XuN6t+ipC91RQBPrfPHiYPL2LAROz8RlQ7LAGB0voole2nrvPmwBA==
   dependencies:
     "@ardatan/aggregate-error" "0.0.6"
     "@graphql-mesh/types" "0.42.0"
