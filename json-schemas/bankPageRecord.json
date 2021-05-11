@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "accountId": {
+        "type": "string"
+      },
+      "accountName": {
+        "type": "string"
+      },
+      "adjustedRecord": {
+        "type": "string"
+      },
+      "bankPageId": {
+        "type": "integer"
+      },
+      "cumulativeBalance": {
+        "type": "number"
+      },
+      "cumulativeBalanceCalculated": {
+        "type": "number"
+      },
+      "date": {
+        "type": "string"
+      },
+      "debitOrCredit": {
+        "type": "string",
+        "enum": ["חובה", "זכות"]
+      },
+      "details": {
+        "type": ["string", "null"]
+      },
+      "id": {
+        "type": "integer"
+      },
+      "matchNumber": {
+        "type": ["integer", "null"]
+      },
+      "reference": {
+        "type": "integer"
+      },
+      "sum": {
+        "type": "number"
+      }
+    },
+    "required": ["id", "bankPageId"]
+  }
+}

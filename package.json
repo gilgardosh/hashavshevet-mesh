@@ -17,8 +17,8 @@
   "homepage": "https://github.com/gilgardosh/hashavshevet-mesh#readme",
   "devDependencies": {},
   "dependencies": {
-    "@graphql-mesh/cli": "0.29.11",
-    "@graphql-mesh/json-schema": "0.15.0-alpha-32c9509f5.0",
+    "@graphql-mesh/cli": "0.29.13-alpha-836232fb3.0",
+    "@graphql-mesh/json-schema": "0.15.0-alpha-836232fb3.0",
     "graphql": "15.5.0"
   }
 }
