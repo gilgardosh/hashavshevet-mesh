@@ -2,22 +2,24 @@ sources:
   - name: Hashavshevet
     handler:
       jsonSchema:
-        baseUrl: https://${WIZ_URL}/
+        baseUrl: "https://${WIZ_URL}/"
+        operationHeaders:
+          Authorization: "Bearer ${WIZ_AUTH_TOKEN}"
+          host: "${WIZ_URL}"
+          Content-Type: application/x-www-form-urlencoded
+          Accept: application/json
         operations:
           - type: Mutation
-            field: importBankPageResponse
-            path: BankPagesApi/importBankPage
+            field: importBankPage
+            path: /BankPagesApi/importBankPage
             method: POST
-            operationHeaders:
-              Authorization: Bearer ${WIZ_AUTH_TOKEN}
-              host: ${WIZ_URL}
             requestSchema: ./json-schemas/importBankPageRequest.json
             responseSchema: ./json-schemas/importBankPageResponse.json
           - type: Query
             field: getCompanies
-            path: CompanyListToTokenApi/TokenCompanies
+            path: /CompanyListToTokenApi/TokenCompanies
             method: POST
-            operationHeaders:
-              Authorization: Bearer ${WIZ_AUTH_TOKEN}
-              host: ${WIZ_URL}
             responseSchema: ./json-schemas/getCompaniesResponse.json
+serve:
+  browser: false
+  exampleQuery: ./example-queries/*.graphql

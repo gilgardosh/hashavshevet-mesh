@@ -1,0 +1,16 @@
+mutation test2 {
+  importBankPage(
+    input: {
+      rows: [
+        { AccountKey: "10001", DatF: "10/05/2021", SuF: 999, CreditDebit: 0 }
+      ]
+    }
+  ) {
+    status
+    errors {
+      err
+      index
+      field
+    }
+  }
+}
