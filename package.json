@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "WIZ_AUTH_TOKEN='blablablabla' WIZ_URL='lb11.wizcloud.co.il' mesh serve"
+    "dev": "WIZ_AUTH_TOKEN='SOMETOKENHERE' WIZ_URL='lb11.wizcloud.co.il' mesh serve"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,8 @@
   "homepage": "https://github.com/gilgardosh/hashavshevet-mesh#readme",
   "devDependencies": {},
   "dependencies": {
-    "@graphql-mesh/cli": "0.29.13-alpha-836232fb3.0",
-    "@graphql-mesh/json-schema": "0.15.0-alpha-836232fb3.0",
+    "@graphql-mesh/cli": "0.29.13-alpha-ff7a281e4.0",
+    "@graphql-mesh/json-schema": "0.15.0-alpha-ff7a281e4.0",
     "graphql": "15.5.0"
   }
 }
