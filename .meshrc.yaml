@@ -29,7 +29,25 @@ sources:
             field: napi
             path: /api/napi
             method: POST
-            responseSchema: ./json-schemas/napiResponse.json            
+            responseSchema: ./json-schemas/napiResponse.json 
+          - type: Query
+            field: getBankPageRecords
+            path: /ExportDataApi/exportData
+            method: POST
+            requestSchema: ./json-schemas/getBankPageRecordsRequest.json
+            responseSchema: ./json-schemas/getBankPageRecordsResponse.json
+          - type: Query
+            field: getAllRecords
+            path: /ExportDataApi/exportData
+            method: POST
+            requestSchema: ./json-schemas/getAllRecordsRequest.json
+            responseSchema: ./json-schemas/getAllRecordsResponse.json
+    transform:
+      - resolversComposition:
+        - resolver: Query.getBankPageRecords
+          composer: ./src/resolvers/getBankPageRecordsResolver
+        # - resolver: Query.getAllRecords
+        #   composer: ./src/resolvers/getAllRecordsResolver
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
