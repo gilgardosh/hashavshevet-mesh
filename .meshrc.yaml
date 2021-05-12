@@ -9,45 +9,79 @@ sources:
           Content-Type: application/x-www-form-urlencoded
           Accept: application/json
         operations:
+          - type: Query
+            field: get
+            path: /api/napi
+            method: POST
+            responseSchema: ./json-schemas/napiResponse.json
+          - type: Query
+            field: getCompanies
+            path: /CompanyListToTokenApi/TokenCompanies
+            method: POST
+            responseSchema: ./json-schemas/getCompaniesResponse.json
+
+          - type: Query
+            field: getRecords
+            path: /ExportDataApi/exportData
+            method: POST
+            responseSchema: ./json-schemas/getRecordsResponse.json
+
+          - type: Query
+            field: getTransactions
+            path: /ExportDataApi/exportData
+            method: POST
+            responseSchema: ./json-schemas/getTransactionsResponse.json
+          # addTransactionsToBatch
+            
+          - type: Mutation
+            field: newBatch
+            path: /jtransApi/newBatch
+            method: POST
+            responseSchema: ./json-schemas/newBatchResponse.json
+          # getBatche
+          # checkBatch
+          # issueBatch
+
+          # importIndexRecords
+          # deleteIndexRecords
+          # getAccounts
+
+          - type: Query
+            field: getBankPageRecords
+            path: /ExportDataApi/exportData
+            method: POST
+            requestSchema: ./json-schemas/getBankPageRecordsRequest.json
+            responseSchema: ./json-schemas/getBankPageRecordsResponse.json
           - type: Mutation
             field: importBankPage
             path: /BankPagesApi/importBankPage
             method: POST
             requestSchema: ./json-schemas/importBankPageRequest.json
             responseSchema: ./json-schemas/importBankPageResponse.json
-          - type: Query
-            field: getCompanies
-            path: /CompanyListToTokenApi/TokenCompanies
-            method: POST
-            responseSchema: ./json-schemas/getCompaniesResponse.json
-          - type: Mutation
-            field: newBatch
-            path: /jtransApi/newBatch
-            method: POST
-            responseSchema: ./json-schemas/newBatchResponse.json
-          - type: Query
-            field: napi
-            path: /api/napi
-            method: POST
-            responseSchema: ./json-schemas/napiResponse.json 
-          # - type: Query
-          #   field: getBankPageRecords
-          #   path: /ExportDataApi/exportData
-          #   method: POST
-          #   requestSchema: ./json-schemas/getBankPageRecordsRequest.json
-          #   responseSchema: ./json-schemas/getBankPageRecordsResponse.json
-          - type: Query
-            field: getAllRecords
-            path: /ExportDataApi/exportData
-            method: POST
-            requestSchema: ./json-schemas/getAllRecordsRequest.json
-            responseSchema: ./json-schemas/getAllRecordsResponse.json
+
+            # createDocument
+            # showDocument
+            # delDocument
+            # issueDoc
+
+            # crmActivities
+            # crmActivitiesTest
+
+            
     transforms:
       - resolversComposition:
-        # - resolver: Query.getBankPageRecords
-        #   composer: ./src/resolvers/getBankPageRecordsResolver
-        - resolver: Query.getAllRecords
-          composer: ./src/resolvers/getAllRecordsResolver.js
+          mode: bare
+          compositions:
+            - resolver: Query.getRecords
+              composer: ./src/resolvers/getRecordsResolver
+            - resolver: Query.getTransactions
+              composer: ./src/resolvers/getTransactionsResolver
+            - resolver: Query.getBatches
+              composer: ./src/resolvers/getBatchesResolver
+            - resolver: Query.getAccounts
+              composer: ./src/resolvers/getAccountsResolver
+            - resolver: Query.getBankPageRecords
+              composer: ./src/resolvers/getBankPageRecordsResolver
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
