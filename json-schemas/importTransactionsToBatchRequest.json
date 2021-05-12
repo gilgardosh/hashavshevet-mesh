@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "batchId": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "checkBatch": {
+      "type": "boolean"
+    },
+    "insertToLastBatch": {
+      "type": "boolean"
+    },
+    "issueBatch": {
+      "type": "boolean"
+    },
+    "transactionsList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["shekelSum"],
+        "properties": {
+          "authorizedDealerNumber": {
+            "type": "string",
+            "description": "VAT registration number (max [20 or 9?] characters)"
+          },
+          "branch": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Branch"
+          },
+          "costingCode": {
+            "type": "string",
+            "description": "Code of cost center (existing code)"
+          },
+          "creditorId": {
+            "type": "string",
+            "description": "Main credit account identifier (max 15 charactes)"
+          },
+          "creditorName": {
+            "type": "string",
+            "description": "Name of the main credit account (max 50 characters)"
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency (max 5 characters)"
+          },
+          "date3": {
+            "type": "string",
+            "description": "Additional date"
+          },
+          "debtorId": {
+            "type": "string",
+            "description": "Main debit account identifier (max 15 charactes)"
+          },
+          "debtorName": {
+            "type": "string",
+            "description": "Name of the main debit account (max 50 characters)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description (max 250 characters)"
+          },
+          "details1": {
+            "type": "string",
+            "description": "Remarks (max 50 characters)"
+          },
+          "details2": {
+            "type": "string",
+            "description": "Additional remarks (max 50 characters)"
+          },
+          "dueDate": {
+            "type": "string",
+            "description": "Due date"
+          },
+          "foreignCurrencySum": {
+            "type": "number",
+            "format": "float",
+            "description": "Total amount in foreign currency"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "float",
+            "description": "Quantity"
+          },
+          "reference1": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Reference"
+          },
+          "reference2": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Reference-2"
+          },
+          "reference3": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Reference-3"
+          },
+          "shekelSum": {
+            "type": "number",
+            "format": "float",
+            "description": "Total NIS amount (credit or debit)"
+          },
+          "type": {
+            "type": "string",
+            "description": "Transaction type code"
+          },
+          "valueDate": {
+            "type": "string",
+            "description": "Date"
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["accountId", "debitOrCreditNumber", "shekelSum"],
+              "properties": {
+                "accountId": {
+                  "type": "string",
+                  "description": "Account identifier (max 15 characters)"
+                },
+                "debitOrCreditNumber": {
+                  "type": "object",
+                  "description": "Credit / Debit"
+                },
+                "foreignCurrencySum": {
+                  "type": "number",
+                  "format": "float",
+                  "description": "Foreign currency amount"
+                },
+                "shekelSum": {
+                  "type": "number",
+                  "format": "float",
+                  "description": "NIS amount"
+                }
+              },
+              "description": "Interface for posting new Record"
+            },
+            "description": "List of Records to add."
+          }
+        },
+        "description": "Interface for posting new Transaction"
+      }
+    }
+  }
+}

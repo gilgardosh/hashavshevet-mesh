@@ -31,20 +31,29 @@ sources:
             path: /ExportDataApi/exportData
             method: POST
             responseSchema: ./json-schemas/getTransactionsResponse.json
-          # addTransactionsToBatch
+          - type: Mutation
+            field: importTransactionsToBatch
+            path: /jtransApi/tmpBatch
+            method: POST
+            requestSchema: ./json-schemas/importTransactionsToBatchRequest.json
+            responseSchema: ./json-schemas/importTransactionsToBatchResponse.json
             
           - type: Mutation
-            field: newBatch
+            field: createBatch
             path: /jtransApi/newBatch
             method: POST
             responseSchema: ./json-schemas/newBatchResponse.json
-          # getBatche
+          # getBatch
           # checkBatch
           # issueBatch
 
+          - type: Query
+            field: getAccounts
+            path: /ExportDataApi/exportData
+            method: POST
+            responseSchema: ./json-schemas/getAccountsResponse.json
           # importIndexRecords
           # deleteIndexRecords
-          # getAccounts
 
           - type: Query
             field: getBankPageRecords
@@ -82,6 +91,8 @@ sources:
               composer: ./src/resolvers/getAccountsResolver
             - resolver: Query.getBankPageRecords
               composer: ./src/resolvers/getBankPageRecordsResolver
+            - resolver: Mutation.importTransactionsToBatch
+              composer: ./src/resolvers/importTransactionsToBatchResolver
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
