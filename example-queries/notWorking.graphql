@@ -1,0 +1,8 @@
+query notWorking {
+  getAllRecords {
+    repdata {
+      account_id
+      batch_id
+    }
+  }
+}

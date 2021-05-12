@@ -31,7 +31,7 @@ const resolver = (next) => (root, args, context, info) => {
   const updatedArgs = {
     ...args,
     parameters,
-    dataFile: dataFile.bankPageRecords,
+    datafile: dataFile.bankPageRecords,
   };
   return next(root, updatedArgs, context, info);
 };
