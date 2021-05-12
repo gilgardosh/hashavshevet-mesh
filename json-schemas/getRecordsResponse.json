@@ -11,91 +11,91 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "account_id": {
+          "accountId": {
             "type": "string"
           },
-          "batch_id": {
+          "batchId": {
             "type": "integer"
           },
-          "counter_account_id": {
+          "counterAccountId": {
             "type": "string"
           },
-          "counter_account_name": {
+          "counterAccountName": {
             "type": "string"
           },
-          "cumulative_balance": {
+          "cumulativeBalance": {
             "type": "number"
           },
-          "cumulative_balance_by_sector": {
+          "cumulativeBalanceBSector": {
             "type": "number"
           },
-          "cumulative_balance_by_sort_key": {
+          "cumulativeBalanceBSortKey": {
             "type": "number"
           },
-          "cumulative_balance_without_opening_balance": {
+          "cumulativeBalanceWithoutOpeningBalance": {
             "type": "number"
           },
-          "cumulative_balance_of_open_sum_in_record": {
+          "cumulativeBalanceOfOpeSumInRecord": {
             "type": "number"
           },
-          "debit_or_credit": {
+          "debitOrCredit": {
             "type": "string",
             "enum": ["חובה", "זכות"]
           },
-          "debit_or_credit_number": {
+          "debitOrCreditNumber": {
             "type": "integer",
             "enum": [-1, 1]
           },
-          "estimated_sum": {
+          "estimateSum": {
             "type": "number"
           },
-          "foreign_currency_credit": {
+          "foreignCurrencyCredit": {
             "type": ["number", "null"]
           },
-          "foreign_currency_cumulative_balance": {
+          "foreignCurrencyCumulativeBalance": {
             "type": "number"
           },
-          "foreign_currency_cumulative_balance_without_opening_balance": {
+          "foreignCurrencyCumulativeBalanceWithoutOpeningBalance": {
             "type": "number"
           },
-          "foreign_currency_debit": {
+          "foreignCurrencyDebit": {
             "type": ["number", "null"]
           },
-          "foreign_currency_sum": {
+          "foreignCurrencSum": {
             "type": "number"
           },
-          "foreign_currency_sum_closed_in_record": {
+          "foreignCurrencSumClosedInRecord": {
             "type": "number"
           },
-          "foreign_currency_sun_open_in_record": {
+          "foreignCurrencSunOpenInRecord": {
             "type": "number"
           },
           "id": {
             "type": "integer"
           },
-          "match_number_card_analysis": {
+          "matchNumberCardAnalysis": {
             "type": ["integer", "null"]
           },
-          "shekel_credit": {
+          "shekelCredit": {
             "type": ["number", "null"]
           },
-          "shekel_debit": {
+          "shekelDebit": {
             "type": ["number", "null"]
           },
-          "shekel_sum": {
+          "shekeSum": {
             "type": "number"
           },
-          "shekel_sum_closed_in_record": {
+          "shekeSumClosedInRecord": {
             "type": "number"
           },
-          "shekel_sum_open_in_record": {
+          "shekeSumOpenInRecord": {
             "type": "number"
           },
-          "transaction_id": {
+          "transactionId": {
             "type": "integer"
           }
         },
-        "required": ["id", "account_id", "batch_id", "transaction_id"]
+        "required": ["id", "accountId", "batchId", "transactionId"]
       }
     }
   }

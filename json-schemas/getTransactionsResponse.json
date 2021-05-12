@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["repdata"],
+  "properties": {
+    "repdata": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "batchId",
+          "id"
+        ],
+        "properties": {
+          "authorizedDealerNumber": {
+            "type": "string",
+            "description": "VAT registration number (max [20 or 9?] characters)"
+          },
+          "batchId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Batch Identifier"
+          },
+          "branch": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Branch"
+          },
+          "branchName": {
+            "type": "string",
+            "description": "Branch Name"
+          },
+          "chequeId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Cheque Identifier"
+          },
+          "costingCode": {
+            "type": "string",
+            "description": "Code of cost center (existing code)"
+          },
+          "costingCodeName": {
+            "type": "string",
+            "description": "Cost-center code name"
+          },
+          "costingCodeFilter": {
+            "type": "string",
+            "description": "Cost-center code filter"
+          },
+          "creditorId": {
+            "type": "string",
+            "description": "Main credit account identifier (max 15 charactes)"
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency"
+          },
+          "date3": {
+            "type": "string",
+            "description": "Additional date"
+          },
+          "debtorId": {
+            "type": "string",
+            "description": "Main debit account identifier (max 15 charactes)"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description (max 250 characters)"
+          },
+          "details1": {
+            "type": "string",
+            "description": "Remarks (max 50 characters)"
+          },
+          "details2": {
+            "type": "string",
+            "description": "Additional remarks (max 50 characters)"
+          },
+          "dueDate": {
+            "type": "string",
+            "description": "Due date"
+          },
+          "exchangeRateDifferences": {
+            "type": "string",
+            "description": "exchange rate differences"
+          },
+          "foreignCurrencySum": {
+            "type": "number",
+            "format": "float",
+            "description": "Total amount in foreign currency"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Transaction Identifier"
+          },
+          "inventoryId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Inventory Identifier"
+          },
+          "linkedFile": {
+            "type": "string",
+            "description": "Linked file"
+          },
+          "quantity": {
+            "type": "number",
+            "format": "float",
+            "description": "Quantity"
+          },
+          "reference1": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Reference"
+          },
+          "reference2": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Reference-2"
+          },
+          "reference3": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Referenc-3"
+          },
+          "registerNumber": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Register number"
+          },
+          "shekelSum": {
+            "type": "number",
+            "format": "float",
+            "description": "Total NIS amount"
+          },
+          "stornoCancelledTransactionId": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Identifier of transaction cancelled by Strogno"
+          },
+          "type": {
+            "type": "string",
+            "description": "Transaction type code"
+          },
+          "userName": {
+            "type": "string",
+            "description": "User name"
+          },
+          "valueDate": {
+            "type": "string",
+            "description": "Date"
+          }
+        }
+      }
+    }
+  }
+}
