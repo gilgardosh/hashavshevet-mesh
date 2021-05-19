@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "WIZ_AUTH_TOKEN='SOMETOKENHERE' WIZ_URL='lb11.wizcloud.co.il' mesh serve"
+    "dev": "WIZ_AUTH_TOKEN='SOMETOKENHERE' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
+    "postinstall": "graphql-mesh typescript --output ./src/generated/mesh.ts"
   },
   "repository": {
     "type": "git",
@@ -15,11 +16,14 @@
     "url": "https://github.com/gilgardosh/hashavshevet-mesh/issues"
   },
   "homepage": "https://github.com/gilgardosh/hashavshevet-mesh#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "ts-node": "9.1.1",
+    "typescript": "4.2.4"
+  },
   "dependencies": {
     "@graphql-mesh/cli": "0.29.13",
     "@graphql-mesh/json-schema": "0.15.0",
-    "@graphql-mesh/transform-resolvers-composition": "^0.9.8",
+    "@graphql-mesh/transform-resolvers-composition": "0.9.8",
     "graphql": "15.5.0"
   }
 }
