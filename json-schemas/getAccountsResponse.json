@@ -9,6 +9,7 @@
       "additionalItems": false,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "id"
         ],

@@ -12,90 +12,140 @@
         "additionalProperties": false,
         "properties": {
           "accountId": {
-            "type": "string"
+            "type": "string",
+            "description": "Main account details identifier"
           },
           "batchId": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32",
+            "description": "Batch identifier"
           },
           "counterAccountId": {
-            "type": "string"
+            "type": "string",
+            "description": "Counter account identifier"
           },
           "counterAccountName": {
-            "type": "string"
+            "type": "string",
+            "description": "Counter account name"
           },
           "cumulativeBalance": {
-            "type": "number"
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance"
           },
-          "cumulativeBalanceBSector": {
-            "type": "number"
+          "cumulativeBalanceByFilter": {
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance by filter"
           },
-          "cumulativeBalanceBSortKey": {
-            "type": "number"
+          "cumulativeBalanceBySortKey": {
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance by sorting code"
+          },
+          "cumulativeBalanceOfOpenSumInRecord": {
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance of total open amount of record"
           },
           "cumulativeBalanceWithoutOpeningBalance": {
-            "type": "number"
-          },
-          "cumulativeBalanceOfOpeSumInRecord": {
-            "type": "number"
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance without opening balance"
           },
           "debitOrCredit": {
             "type": "string",
-            "enum": ["חובה", "זכות"]
+            "enum": ["חובה", "זכות"],
+            "description": "Credit / Debit"
           },
           "debitOrCreditNumber": {
             "type": "integer",
-            "enum": [-1, 1]
+            "enum": [-1, 1],
+            "description": "Credit / Debit"
           },
-          "estimateSum": {
-            "type": "number"
+          "estimatedSum": {
+            "type": "number",
+            "format": "float",
+            "description": "Estimated total amount"
           },
           "foreignCurrencyCredit": {
-            "type": ["number", "null"]
+            "type": ["number", "null"],
+            "format": "float",
+            "description": "Credit amount in foreign currency"
           },
           "foreignCurrencyCumulativeBalance": {
-            "type": "number"
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance in foreign currency"
           },
           "foreignCurrencyCumulativeBalanceWithoutOpeningBalance": {
-            "type": "number"
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance in foreign currency without opening balance"
           },
           "foreignCurrencyDebit": {
-            "type": ["number", "null"]
+            "type": ["number", "null"],
+            "format": "float",
+            "description": "Dedit amount in foreign currency"
           },
-          "foreignCurrencSum": {
-            "type": "number"
+          "foreignCurrencySum": {
+            "type": "number",
+            "format": "float",
+            "description": "Total amount in foreign currency"
           },
-          "foreignCurrencSumClosedInRecord": {
-            "type": "number"
+          "foreignCurrencySumClosedInRecord": {
+            "type": "number",
+            "format": "float",
+            "description": "Total amount in foreign currency closed in record"
           },
-          "foreignCurrencSunOpenInRecord": {
-            "type": "number"
+          "foreignCurrencySumOpenInRecord": {
+            "type": "number",
+            "format": "float",
+            "description": "Total amount in foreign currency open  in record"
           },
           "id": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32",
+            "description": "Record identifier"
           },
           "matchNumberCardAnalysis": {
-            "type": ["integer", "null"]
+            "type": ["integer", "null"],
+            "format": "int32",
+            "description": "Match number - card analysis"
           },
           "shekelCredit": {
-            "type": ["number", "null"]
+            "type": ["number", "null"],
+            "format": "float",
+            "description": "Credit amount in NIS"
           },
           "shekelDebit": {
-            "type": ["number", "null"]
+            "type": ["number", "null"],
+            "format": "float",
+            "description": "Dedit amount in NIS"
           },
-          "shekeSum": {
-            "type": "number"
+          "shekelSum": {
+            "type": "number",
+            "format": "float",
+            "description": "Total NIS amount"
           },
-          "shekeSumClosedInRecord": {
-            "type": "number"
+          "shekelSumClosedInRecord": {
+            "type": "number",
+            "format": "float",
+            "description": "Total NIS amount closed in record"
           },
-          "shekeSumOpenInRecord": {
-            "type": "number"
+          "shekelSumOpenInRecord": {
+            "type": "number",
+            "format": "float",
+            "description": "Total NIS amount open  in record"
           },
           "transactionId": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32",
+            "description": "Transaction identifier"
           }
         },
-        "required": ["id", "accountId", "batchId", "transactionId"]
+        "required": ["accountId", "batchId", "id", "transactionId"],
+        "description": "A Single Record"
       }
     }
   }

@@ -3,136 +3,145 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "batchId": {
+    "batchNo": {
       "type": "integer",
-      "format": "int32"
+      "format": "int32",
+      "description": "Insert the transactions to the temporary batch having this number. If no such temporary batch exists, open a new batch."
     },
-    "checkBatch": {
-      "type": "boolean"
+    "check": {
+      "type": "boolean",
+      "description": "check the batch for errors and return the batch status"
     },
-    "insertToLastBatch": {
-      "type": "boolean"
+    "insertolastb": {
+      "type": "boolean",
+      "description": "Insert the transactions to the last open temporary batch. If false, open a new batch."
     },
-    "issueBatch": {
-      "type": "boolean"
+    "issue": {
+      "type": "boolean",
+      "description": "input the temporary batch into the permanent storage."
     },
-    "transactionsList": {
+    "rows": {
       "type": "array",
+      "additionalItems": false,
       "items": {
         "type": "object",
-        "required": ["shekelSum"],
+        "additionalProperties": false,
+        "required": ["SuF"],
         "properties": {
-          "authorizedDealerNumber": {
+          "Osek874": {
             "type": "string",
             "description": "VAT registration number (max [20 or 9?] characters)"
           },
-          "branch": {
+          "Branch": {
             "type": "integer",
             "format": "int32",
             "description": "Branch"
           },
-          "costingCode": {
+          "CostCode": {
             "type": "string",
             "description": "Code of cost center (existing code)"
           },
-          "creditorId": {
+          "TransCredID": {
             "type": "string",
             "description": "Main credit account identifier (max 15 charactes)"
           },
-          "creditorName": {
+          "CredName": {
             "type": "string",
             "description": "Name of the main credit account (max 50 characters)"
           },
-          "currencyCode": {
+          "CurrencyCode": {
             "type": "string",
             "description": "Currency (max 5 characters)"
           },
-          "date3": {
+          "DatF3": {
             "type": "string",
             "description": "Additional date"
           },
-          "debtorId": {
+          "TransDebID": {
             "type": "string",
             "description": "Main debit account identifier (max 15 charactes)"
           },
-          "debtorName": {
+          "DebName": {
             "type": "string",
             "description": "Name of the main debit account (max 50 characters)"
           },
-          "description": {
+          "Description": {
             "type": "string",
             "description": "Description (max 250 characters)"
           },
-          "details1": {
+          "Details": {
             "type": "string",
             "description": "Remarks (max 50 characters)"
           },
-          "details2": {
+          "Det2": {
             "type": "string",
             "description": "Additional remarks (max 50 characters)"
           },
-          "dueDate": {
+          "DueDate": {
             "type": "string",
             "description": "Due date"
           },
-          "foreignCurrencySum": {
+          "SuFDlr": {
             "type": "number",
             "format": "float",
             "description": "Total amount in foreign currency"
           },
-          "quantity": {
+          "Quant": {
             "type": "number",
             "format": "float",
             "description": "Quantity"
           },
-          "reference1": {
+          "Referance": {
             "type": "integer",
             "format": "int32",
             "description": "Reference"
           },
-          "reference2": {
+          "Ref2": {
             "type": "integer",
             "format": "int32",
             "description": "Reference-2"
           },
-          "reference3": {
+          "Ref3": {
             "type": "integer",
             "format": "int32",
             "description": "Reference-3"
           },
-          "shekelSum": {
+          "SuF": {
             "type": "number",
             "format": "float",
             "description": "Total NIS amount (credit or debit)"
           },
-          "type": {
+          "TransType": {
             "type": "string",
             "description": "Transaction type code"
           },
-          "valueDate": {
+          "ValueDate": {
             "type": "string",
             "description": "Date"
           },
-          "records": {
+          "moves": {
             "type": "array",
+            "additionalItems": false,
             "items": {
               "type": "object",
+              "additionalProperties": false,
               "required": ["accountId", "debitOrCreditNumber", "shekelSum"],
               "properties": {
-                "accountId": {
+                "AccountKey": {
                   "type": "string",
                   "description": "Account identifier (max 15 characters)"
                 },
-                "debitOrCreditNumber": {
-                  "type": "object",
-                  "description": "Credit / Debit"
+                "DebitCredit": {
+                  "type": "integer",
+                  "enum": [0, 1],
+                  "description": "Debit=1, Credit=0"
                 },
-                "foreignCurrencySum": {
+                "SufDlr": {
                   "type": "number",
                   "format": "float",
                   "description": "Foreign currency amount"
                 },
-                "shekelSum": {
+                "Suf": {
                   "type": "number",
                   "format": "float",
                   "description": "NIS amount"

@@ -17,13 +17,17 @@
         "required": ["index"],
         "properties": {
           "index": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32",
+            "description": "Index"
           },
           "field": {
-            "type": "string"
+            "type": "string",
+            "description": "Field name where error occurred"
           },
           "err": {
-            "type": "string"
+            "type": "string",
+            "description": "Error description"
           }
         }
       }

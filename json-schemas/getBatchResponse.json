@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["repdata"],
+  "properties": {
+    "repdata": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "A Single Batch",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "details": {
+            "type": "string",
+            "description": "Remarks"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Batch identifier"
+          },
+          "initDate": {
+            "type": "string",
+            "description": "Initiate date"
+          },
+          "initTime": {
+            "type": "string",
+            "description": "Initiate time"
+          },
+          "issueDate": {
+            "type": "string",
+            "description": "Issue date"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type"
+          }
+        }
+      }
+    }
+  }
+}

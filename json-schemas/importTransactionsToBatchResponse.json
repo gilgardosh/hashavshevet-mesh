@@ -32,8 +32,10 @@
     },
     "errors": {
       "type": "array",
+      "additionalItems": false,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "properties": {
           "headerID": {
             "type": "string",

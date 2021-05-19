@@ -12,47 +12,68 @@
         "additionalProperties": false,
         "properties": {
           "accountId": {
-            "type": "string"
+            "type": "string",
+            "description": "Account identifier"
           },
           "accountName": {
-            "type": "string"
+            "type": "string",
+            "description": "Account name (max 50 characters)"
           },
           "adjustedRecord": {
-            "type": "string"
+            "type": "string",
+            "description": "Adjusted record"
           },
           "bankPageId": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32",
+            "description": "Bank page identifier"
           },
           "cumulativeBalance": {
-            "type": "number"
+            "type": "number",
+            "format": "float",
+            "description": "Cumulative balance"
           },
           "cumulativeBalanceCalculated": {
-            "type": "number"
+            "type": "number",
+            "format": "float",
+            "description": "Calculated cumulative balance"
           },
           "date": {
-            "type": "string"
+            "type": "string",
+            "description": "Date"
           },
           "debitOrCredit": {
             "type": "string",
-            "enum": ["חובה", "זכות"]
+            "enum": ["חובה", "זכות"],
+            "description": "Credit / Debit"
           },
           "details": {
-            "type": ["string", "null"]
+            "type": ["string", "null"],
+            "description": "Remarks (max 50 characters)"
           },
           "id": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32",
+            "description": "Bank page record identifier"
           },
           "matchNumber": {
-            "type": ["integer", "null"]
+            "type": ["integer", "null"],
+            "format": "int32",
+            "description": "Match number"
           },
           "reference": {
-            "type": "integer"
+            "type": "integer",
+            "format": "int32",
+            "description": "Reference"
           },
           "sum": {
-            "type": "number"
+            "type": "number",
+            "format": "float",
+            "description": "Total ammount"
           }
         },
-        "required": ["id", "bankPageId"]
+        "required": ["id", "bankPageId"],
+        "description": "A Single Bank Page Record"
       }
     }
   }

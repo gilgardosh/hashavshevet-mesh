@@ -13,23 +13,29 @@
         "required": ["AccountKey", "CreditDebit", "DatF", "SuF"],
         "properties": {
           "AccountKey": {
-            "type": "string"
+            "type": "string",
+            "description": "Account identifier (max 15 characters)"
           },
           "CreditDebit": {
             "type": "integer",
-            "enum": [0, 1]
+            "enum": [0, 1],
+            "description": "Debit=1, Credit=0"
           },
           "DatF": {
-            "type": "string"
+            "type": "string",
+            "description": "Date"
           },
           "Details": {
-            "type": "string"
+            "type": "string",
+            "description": "Remarks (max 50 characters)"
           },
           "Reference": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Reference"
           },
           "SuF": {
-            "type": "number"
+            "type": "number",
+            "description": "NIS amount"
           }
         }
       }
