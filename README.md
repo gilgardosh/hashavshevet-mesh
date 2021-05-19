@@ -8,3 +8,4 @@ getBatches - form has errors on Hashavshevet's side. however it is designed - no
 - add filtering on every field for "getAll" requests
 - complete missing calls commented on .meshrc.ymal
 - cross requests calls (every result ID can fetch next entity, etc.)
+- better login

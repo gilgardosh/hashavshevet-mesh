@@ -43,16 +43,32 @@ sources:
             path: /jtransApi/newBatch
             method: POST
             responseSchema: ./json-schemas/newBatchResponse.json
-          # getBatch
-          # checkBatch
-          # issueBatch
+          - type: Query
+            field: getBatch
+            path: /ExportDataApi/exportData
+            method: POST
+            requestSchema: ./json-schemas/getBatchRequest.json
+            responseSchema: ./json-schemas/getBatchResponse.json
+          - type: Query
+            field: checkBatch
+            path: /jtransApi/chkBatch
+            method: POST
+            requestSchema: ./json-schemas/checkBatchRequest.json
+            responseSchema: ./json-schemas/checkBatchResponse.json
+          - type: Mutation
+            field: issueBatch
+            path: /jtransApi/issueBatch
+            method: POST
+            requestSchema: ./json-schemas/issueBatchRequest.json
+            responseSchema: ./json-schemas/issueBatchResponse.json
 
           - type: Query
             field: getAccounts
             path: /ExportDataApi/exportData
             method: POST
             responseSchema: ./json-schemas/getAccountsResponse.json
-          # importIndexRecords
+          # importAccounts (importIndexRecords)
+          # importItems (importIndexRecords)
           # deleteIndexRecords
 
           - type: Query
@@ -85,14 +101,12 @@ sources:
               composer: ./src/resolvers/getRecordsResolver
             - resolver: Query.getTransactions
               composer: ./src/resolvers/getTransactionsResolver
-            - resolver: Query.getBatches
-              composer: ./src/resolvers/getBatchesResolver
+            - resolver: Query.getBatch
+              composer: ./src/resolvers/getBatchResolver
             - resolver: Query.getAccounts
               composer: ./src/resolvers/getAccountsResolver
             - resolver: Query.getBankPageRecords
               composer: ./src/resolvers/getBankPageRecordsResolver
-            - resolver: Mutation.importTransactionsToBatch
-              composer: ./src/resolvers/importTransactionsToBatchResolver
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
