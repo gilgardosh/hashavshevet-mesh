@@ -576,10 +576,10 @@
     "@types/lru-cache" "5.1.0"
     lru-cache "6.0.0"
 
-"@graphql-mesh/cli@0.29.14":
-  version "0.29.14"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.29.14.tgz#553e820581df4c743282d8680ff0c3a557ea77f7"
-  integrity sha512-aJgNpvCxsNUub+C7YiFztO+mCgbDImVK8oOOPzHy7pVxYd7Bv4EZQpkNxQn7BO0+aG+fQHzXsOZ5oBrj9bwvfg==
+"@graphql-mesh/cli@0.30.0":
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.30.0.tgz#e8461bd4d81b3557980b0171f00fdd92ac1aaada"
+  integrity sha512-qvHRkR/u+WIkiIfUtobVlH39x2w4thHNomzM/tJMwHfPSImBPV+zgUU1CeVF9fG+CutBPoXJ1y/+1xlkiQDMDA==
   dependencies:
     "@graphql-codegen/core" "1.17.9"
     "@graphql-codegen/typescript" "1.22.0"
@@ -599,7 +599,7 @@
     cookie-parser "1.4.5"
     cors "2.8.5"
     express "4.17.1"
-    graphql-helix "1.6.0"
+    graphql-helix "1.6.1"
     graphql-upload "12.0.0"
     graphql-ws "4.5.1"
     js-yaml "4.1.0"
@@ -1895,10 +1895,10 @@ graphql-compose@8.1.0:
     graphql-type-json "0.3.2"
     object-path "0.11.5"
 
-graphql-helix@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/graphql-helix/-/graphql-helix-1.6.0.tgz#cd9353afac12dc283e65473121283ae2b2077a12"
-  integrity sha512-/u9W3hTwMA95gM1yWNLlB2kOp/4y3yvAaA12G9rRUv4Y21d/D1Q6SCVJVEyvA2vJU/6JK1DFOewMap+rqFEQZg==
+graphql-helix@1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/graphql-helix/-/graphql-helix-1.6.1.tgz#f504b8ceb8661c5884a6ae5edfcbd66891342710"
+  integrity sha512-fdh9+uHnH0hz4ooGJkfPBh02ieblnH9G0OkbYS4vMMTJnq0Ea4R/QsIwzb2vLMDQlKhODkMbKlc1uXwghnvJrw==
 
 graphql-jit@0.5.1:
   version "0.5.1"
