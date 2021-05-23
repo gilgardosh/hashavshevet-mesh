@@ -1,29 +1,61 @@
 {
   "name": "hashavshevet-mesh",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Graphql server for wrapping Hashavshevet API",
   "scripts": {
-    "dev": "WIZ_AUTH_TOKEN='SOMETOKENHERE' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
-    "postinstall": "graphql-mesh typescript --output ./src/generated/mesh.ts"
+    "lint": "eslint './src/*/**/*.{js,ts,tsx}' --quiet --fix",
+    "prebuild": "yarn lint",
+    "build": "tsc",
+    "postbuild": "yarn copy-files",
+    "copy-files": "cp \".meshrc.yaml\" dist",
+    "mesh:serve": "WIZ_AUTH_TOKEN='SOMETOKEN' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
+    "postinstall": "yarn mesh:generate",
+    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.d.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
+    "dev": "ts-node ./"
+  },
+  "exports": "./dist/index.js",
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gilgardosh/hashavshevet-mesh.git"
   },
-  "author": "",
+  "author": "Gil Gardosh",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/gilgardosh/hashavshevet-mesh/issues"
   },
   "homepage": "https://github.com/gilgardosh/hashavshevet-mesh#readme",
+  "dependencies": {
+    "@graphql-mesh/cli": "0.30.0",
+    "@graphql-mesh/config": "^0.16.5",
+    "@graphql-mesh/json-schema": "0.15.0",
+    "@graphql-mesh/runtime": "^0.16.5",
+    "@graphql-mesh/transform-resolvers-composition": "0.9.8",
+    "graphql": "15.5.0",
+    "node-fetch": "^2.6.1"
+  },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/node": "^15.6.0",
+    "@typescript-eslint/eslint-plugin": "4.24.0",
+    "@typescript-eslint/parser": "4.24.0",
+    "eslint": "7.27.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "2.23.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "prettier": "^2.3.0",
     "ts-node": "9.1.1",
     "typescript": "4.2.4"
   },
-  "dependencies": {
-    "@graphql-mesh/cli": "0.30.0",
-    "@graphql-mesh/json-schema": "0.15.0",
-    "@graphql-mesh/transform-resolvers-composition": "0.9.8",
-    "graphql": "15.5.0"
-  }
+  "keywords": [
+    "hashavshevet",
+    "graphql",
+    "mesh"
+  ]
 }

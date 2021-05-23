@@ -5,6 +5,6 @@ module.exports = (next) => (root, args, context, info) => {
   if (!args.input) {
     args.input = {};
   }
-  args.input["datafile"] = datafile;
+  args.input.datafile = datafile;
   return next(root, args, context, info);
 };
