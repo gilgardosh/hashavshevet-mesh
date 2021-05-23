@@ -11,3 +11,4 @@ In future, after Hashavshevet server update, can be updated here like other 'get
 - cross requests calls (every result ID can fetch next entity, etc.)
 - better login
 - complete missing calls commented on .meshrc.ymal
+- merge json schemas to one file using $ref
