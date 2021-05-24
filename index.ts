@@ -41,17 +41,3 @@ const login = (wizKey: string, company: string, wizUrl: string) => {
 };
 
 export default app;
-
-const testRun = async () => {
-  const sdk = await app(
-    '20e260c0b4150eda0927ca2742d19831f1ff6602c5c9965698247d2a0209ac35c58d0ce7f8344dd8a012cb137972a10e21c44874aa7ce9b1e3f8c889d727f7ab',
-    'wizdb1229n4',
-    'lb11.wizcloud.co.il',
-  );
-
-  const records = await sdk.getBankPageRecordsQuery();
-
-  console.log(records);
-};
-
-testRun();
