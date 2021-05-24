@@ -2,11 +2,11 @@ sources:
   - name: Hashavshevet
     handler:
       jsonSchema:
-        baseUrl: "https://${WIZ_URL}/"
+        baseUrl: 'https://${WIZ_URL}/'
         baseSchema: ./json-schemas/HashavshevetSchema.json
         operationHeaders:
-          Authorization: "Bearer ${WIZ_AUTH_TOKEN}"
-          host: "${WIZ_URL}"
+          Authorization: 'Bearer ${WIZ_AUTH_TOKEN}'
+          host: '${WIZ_URL}'
           Content-Type: application/x-www-form-urlencoded
           Accept: application/json
         operations:
@@ -38,7 +38,7 @@ sources:
             method: POST
             requestSchema: ./json-schemas/importTransactionsToBatchRequest.json
             responseSchema: ./json-schemas/importTransactionsToBatchResponse.json
-            
+
           - type: Mutation
             field: createBatch
             path: /jtransApi/newBatch
@@ -93,7 +93,6 @@ sources:
             # crmActivities
             # crmActivitiesTest
 
-            
     transforms:
       - resolversComposition:
           mode: bare
