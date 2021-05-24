@@ -3,7 +3,7 @@ sources:
     handler:
       jsonSchema:
         baseUrl: 'https://${WIZ_URL}/'
-        baseSchema: ./json-schemas/HashavshevetSchema.json
+        baseSchema: ./json-schemas/hashavshevetSchema.json
         operationHeaders:
           Authorization: 'Bearer ${WIZ_AUTH_TOKEN}'
           host: '${WIZ_URL}'
@@ -55,7 +55,7 @@ sources:
             path: /jtransApi/chkBatch
             method: POST
             requestSchema: ./json-schemas/checkBatchRequest.json
-            responseSchema: ./json-schemas/checkBatchResponse.json
+            responseTypeName: checkBatchResponse
           - type: Mutation
             field: issueBatch
             path: /jtransApi/issueBatch

@@ -68,6 +68,69 @@
           }
         }
       }
+    },
+    "checkBatchRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "batchNo": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Batch identifier"
+        }
+      }
+    },
+    "checkBatchResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "batch_check": {
+          "anyOf": [
+            { "type": "string", "description": "Batch check status" },
+            {
+              "type": "array",
+              "additionalItems": false,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "headerID": {
+                    "type": "string",
+                    "description": "Transaction identifier. AKA transactionId"
+                  },
+                  "err": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Error code"
+                  },
+                  "recId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Record identifier. AKA recordId"
+                  },
+                  "field": {
+                    "type": "string",
+                    "description": "Field name where error occurred"
+                  },
+                  "TxtMsg": {
+                    "type": "string",
+                    "description": "Error message"
+                  },
+                  "transaction": {
+                    "$ref": "#/components/schemas/Transaction",
+                    "description": "Transaction details"
+                  },
+                  "record": {
+                    "$ref": "#/components/schemas/Record",
+                    "description": "Record details"
+                  }
+                }
+              },
+              "description": "Batch check errors list"
+            }
+          ]
+        }
+      }
     }
   }
 }
