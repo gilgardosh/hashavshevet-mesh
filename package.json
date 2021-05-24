@@ -10,10 +10,15 @@
     "copy-files": "cp \".meshrc.yaml\" dist",
     "mesh:serve": "WIZ_AUTH_TOKEN='SOMETOKEN' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
     "postinstall": "yarn mesh:generate",
-    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.d.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
-    "dev": "ts-node ./"
+    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
+    "dev": "ts-node ./index.ts",
+    "start": "node ./dist"
   },
-  "exports": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
