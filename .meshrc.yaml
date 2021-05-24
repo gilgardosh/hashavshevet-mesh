@@ -110,6 +110,3 @@ sources:
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
-
-  require:
-  - ts-node/register/transpile-only
