@@ -7,7 +7,7 @@
     "prebuild": "yarn lint",
     "build": "tsc",
     "postbuild": "yarn copy-files",
-    "copy-files": "cp \".meshrc.yaml\" dist",
+    "copy-files": "cp .meshrc.yaml dist && cp -a json-schemas/ dist/json-schemas/",
     "mesh:serve": "WIZ_AUTH_TOKEN='SOMETOKEN' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
     "postinstall": "yarn mesh:generate",
     "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
@@ -15,6 +15,7 @@
     "start": "node ./dist"
   },
   "main": "./dist/index.js",
+  "export": "./dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -39,11 +40,12 @@
     "@graphql-mesh/runtime": "0.16.5",
     "@graphql-mesh/transform-resolvers-composition": "0.9.8",
     "graphql": "15.5.0",
-    "node-fetch": "2.6.1"
+    "node-fetch": "2.6.1",
+    "path": "0.12.7"
   },
   "devDependencies": {
     "@tsconfig/recommended": "1.0.1",
-    "@types/node": "^15.6.0",
+    "@types/node": "15.6.0",
     "@typescript-eslint/eslint-plugin": "4.24.0",
     "@typescript-eslint/parser": "4.24.0",
     "eslint": "7.27.0",

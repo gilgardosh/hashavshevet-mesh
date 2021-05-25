@@ -2,6 +2,7 @@ import { getSdk } from './src/generated/sdk';
 import { findAndParseConfig } from '@graphql-mesh/config';
 import { getMesh } from '@graphql-mesh/runtime';
 import fetch from 'node-fetch';
+import * as path from 'path';
 
 const app = async (wizPersonalToken: string, wizCompanyKey: string, wizUrl: string) => {
   console.log('initiating sdk...');
@@ -11,9 +12,14 @@ const app = async (wizPersonalToken: string, wizCompanyKey: string, wizUrl: stri
 
   console.log('logged in to Hashavshevet');
 
-  const meshConfig = await findAndParseConfig();
+  const localPath = path.join(__dirname);
+
+  const meshConfig = await findAndParseConfig({
+    dir: localPath,
+  });
+
   const { sdkRequester } = await getMesh(meshConfig);
-  const sdk = getSdk(sdkRequester);
+  const sdk = await getSdk(sdkRequester);
 
   console.log('Mesh ready');
 
