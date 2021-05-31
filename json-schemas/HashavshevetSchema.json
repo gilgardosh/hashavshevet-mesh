@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
-    "napiResopnse": {
+    "getSessionResopnse": {
       "type": "object",
       "additionalProperties": false,
       "required": ["data", "session"],
@@ -69,58 +69,17 @@
         }
       }
     },
-    "checkBatchRequest": {
+    "getRecordsResponse": {
       "type": "object",
       "additionalProperties": false,
+      "required": ["repdata"],
       "properties": {
-        "batchNo": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Batch identifier"
-        }
-      }
-    },
-    "checkBatchResponse": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "batch_check": {
-          "anyOf": [
-            { "type": "string", "description": "Batch check status" },
-            {
-              "type": "array",
-              "additionalItems": false,
-              "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "headerID": {
-                    "type": "string",
-                    "description": "Transaction identifier. AKA transactionId"
-                  },
-                  "err": {
-                    "type": "integer",
-                    "format": "int32",
-                    "description": "Error code"
-                  },
-                  "recId": {
-                    "type": "integer",
-                    "format": "int32",
-                    "description": "Record identifier. AKA recordId"
-                  },
-                  "field": {
-                    "type": "string",
-                    "description": "Field name where error occurred"
-                  },
-                  "TxtMsg": {
-                    "type": "string",
-                    "description": "Error message"
-                  }
-                }
-              },
-              "description": "Batch check errors list"
-            }
-          ]
+        "repdata": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/components/Record"
+          }
         }
       }
     },
@@ -138,6 +97,92 @@
         }
       }
     },
+    "importTransactionsToBatchResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Response for Posting Transactions to a Batch",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Final Status"
+        },
+        "batch_issue": {
+          "type": "string",
+          "description": "Batch Issue Status"
+        },
+        "batch_check": {
+          "$ref": "#/components/batchCheckResponse"
+        },
+        "newbatch": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Batch identifier (on cases new batch was created)"
+        },
+        "batchno": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Batch identifier (on cases added to existing batch)"
+        },
+        "batchId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Batch identifier"
+        },
+        "errors": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "headerID": {
+                "type": "string",
+                "description": "Transaction identifier. AKA transactionId"
+              },
+              "err": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Error code"
+              },
+              "recId": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Record identifier. AKA recordId"
+              },
+              "field": {
+                "type": "string",
+                "description": "Field name where error occurred"
+              },
+              "TxtMsg": {
+                "type": "string",
+                "description": "Error message"
+              }
+            }
+          },
+          "description": "errors list"
+        }
+      }
+    },
+
+    "createBatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["newbatch"],
+      "properties": {
+        "newbatch": {
+          "type": "integer"
+        }
+      }
+    },
+    "checkBatchResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "batch_check": {
+          "$ref": "#/components/batchCheckResponse"
+        }
+      }
+    },
     "getBatchResponse": {
       "type": "object",
       "additionalProperties": false,
@@ -152,17 +197,16 @@
         }
       }
     },
-    "getRecordsResponse": {
+    "issueBatchResponse": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repdata"],
       "properties": {
-        "repdata": {
-          "type": "array",
-          "additionalItems": false,
-          "items": {
-            "$ref": "#/components/Record"
-          }
+        "batch_check": {
+          "$ref": "#/components/batchCheckResponse"
+        },
+        "batch_issue": {
+          "type": "string",
+          "description": "Batch issue status"
         }
       }
     }
@@ -488,6 +532,44 @@
           "description": "Transaction identifier"
         }
       }
+    },
+    "batchCheckResponse": {
+      "anyOf": [
+        { "type": "string", "description": "Batch check status" },
+        {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "headerID": {
+                "type": "string",
+                "description": "Transaction identifier. AKA transactionId"
+              },
+              "err": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Error code"
+              },
+              "recId": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Record identifier. AKA recordId"
+              },
+              "field": {
+                "type": "string",
+                "description": "Field name where error occurred"
+              },
+              "TxtMsg": {
+                "type": "string",
+                "description": "Error message"
+              }
+            }
+          },
+          "description": "Batch check errors list"
+        }
+      ]
     }
   }
 }

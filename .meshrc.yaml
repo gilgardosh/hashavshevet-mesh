@@ -14,7 +14,7 @@ sources:
             field: getSession
             path: /api/napi
             method: POST
-            responseTypeName: napiResopnse
+            responseTypeName: getSessionResopnse
           - type: Query
             field: getCompanies
             path: /CompanyListToTokenApi/TokenCompanies
@@ -26,7 +26,6 @@ sources:
             path: /ExportDataApi/exportData
             method: POST
             responseTypeName: getRecordsResponse
-            # responseSchema: ./json-schemas/getRecordsResponse.json
 
           - type: Query
             field: getTransactions
@@ -38,13 +37,13 @@ sources:
             path: /jtransApi/tmpBatch
             method: POST
             requestSchema: ./json-schemas/importTransactionsToBatchRequest.json
-            responseSchema: ./json-schemas/importTransactionsToBatchResponse.json
+            responseTypeName: importTransactionsToBatchResponse
 
           - type: Mutation
             field: createBatch
             path: /jtransApi/newBatch
             method: POST
-            responseSchema: ./json-schemas/newBatchResponse.json
+            responseTypeName: createBatch
           - type: Query
             field: getBatch
             path: /ExportDataApi/exportData
@@ -62,7 +61,7 @@ sources:
             path: /jtransApi/issueBatch
             method: POST
             requestSchema: ./json-schemas/issueBatchRequest.json
-            responseSchema: ./json-schemas/issueBatchResponse.json
+            responseTypeName: issueBatchResponse
 
           - type: Query
             field: getAccounts

@@ -8,9 +8,9 @@
     "build": "tsc",
     "postbuild": "yarn copy-files",
     "copy-files": "cp .meshrc.yaml dist && cp -a json-schemas/ dist/json-schemas/",
-    "mesh:serve": "WIZ_AUTH_TOKEN='SOMETOKEN' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
+    "mesh:serve": "WIZ_AUTH_TOKEN='dbf321f69df6009c81e9764a7857a48e0702a941eaf3beaad4225284affda562cd1f66e1d8e8f9794341a0fa3c575aec386509db3111def20b28305da2351cfc33ec47b0b25d80a8511449019b756a79b4c1cca8a1d273a191c8adb73799371bda5ce44cdb55f1ee57cb2afd9646a487' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
     "postinstall": "yarn mesh:generate",
-    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
+    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 3",
     "dev": "ts-node ./index.ts",
     "start": "node ./dist"
   },
