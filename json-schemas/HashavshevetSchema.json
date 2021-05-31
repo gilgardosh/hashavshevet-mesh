@@ -180,6 +180,7 @@
     "checkBatchResponse": {
       "type": "object",
       "additionalProperties": false,
+      "required": ["repdata"],
       "properties": {
         "batch_check": {
           "$ref": "#/components/BatchCheckResponse"
@@ -275,6 +276,19 @@
           "items": {
             "$ref": "#/components/Account"
           }
+        }
+      }
+    },
+    "issueBatchResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "batch_check": {
+          "$ref": "#/components/batchCheckResponse"
+        },
+        "batch_issue": {
+          "type": "string",
+          "description": "Batch issue status"
         }
       }
     }
