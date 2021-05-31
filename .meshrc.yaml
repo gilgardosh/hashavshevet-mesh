@@ -99,15 +99,15 @@ sources:
           mode: bare
           compositions:
             - resolver: Query.getRecords
-              composer: ./src/resolvers/getRecordsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getRecordsResolver
             - resolver: Query.getTransactions
-              composer: ./src/resolvers/getTransactionsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getTransactionsResolver
             - resolver: Query.getBatch
-              composer: ./src/resolvers/getBatchResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getBatchResolver
             - resolver: Query.getAccounts
-              composer: ./src/resolvers/getAccountsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getAccountsResolver
             - resolver: Query.getBankPageRecords
-              composer: ./src/resolvers/getBankPageRecordsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getBankPageRecordsResolver
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
