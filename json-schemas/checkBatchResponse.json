@@ -34,14 +34,6 @@
               "TxtMsg": {
                 "type": "string",
                 "description": "Error message"
-              },
-              "transaction": {
-                "$ref": "#/components/schemas/Transaction",
-                "description": "Transaction details"
-              },
-              "record": {
-                "$ref": "#/components/schemas/Record",
-                "description": "Record details"
               }
             }
           },

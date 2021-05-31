@@ -19,19 +19,20 @@ sources:
             field: getCompanies
             path: /CompanyListToTokenApi/TokenCompanies
             method: POST
-            responseTypeName: getCompeniesResopnse
+            responseTypeName: getCompaniesResopnse
 
           - type: Query
             field: getRecords
             path: /ExportDataApi/exportData
             method: POST
-            responseSchema: ./json-schemas/getRecordsResponse.json
+            responseTypeName: getRecordsResponse
+            # responseSchema: ./json-schemas/getRecordsResponse.json
 
           - type: Query
             field: getTransactions
             path: /ExportDataApi/exportData
             method: POST
-            responseSchema: ./json-schemas/getTransactionsResponse.json
+            responseTypeName: getTransactionsResponse
           - type: Mutation
             field: importTransactionsToBatch
             path: /jtransApi/tmpBatch
@@ -49,7 +50,7 @@ sources:
             path: /ExportDataApi/exportData
             method: POST
             requestSchema: ./json-schemas/getBatchRequest.json
-            responseSchema: ./json-schemas/getBatchResponse.json
+            responseTypeName: getBatchResponse
           - type: Query
             field: checkBatch
             path: /jtransApi/chkBatch
@@ -110,3 +111,22 @@ sources:
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
+
+require:
+  - ts-node/register/transpile-only
+
+additionalTypeDefs: |
+  extend type HashavshevetSchemaJsonTransaction {
+    batch: HashavshevetSchemaJsonBatch
+    records: [HashavshevetSchemaJsonRecord]
+  }
+  extend type HashavshevetSchemaJsonBatch {
+    transactions: [HashavshevetSchemaJsonTransaction]
+  }
+  extend type HashavshevetSchemaJsonRecord {
+    transaction: HashavshevetSchemaJsonTransaction
+    batch: HashavshevetSchemaJsonBatch
+  }
+
+additionalResolvers:
+  - ./src/resolvers/mesh-resolvers.ts

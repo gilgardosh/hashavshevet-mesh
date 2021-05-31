@@ -42,7 +42,7 @@
         }
       }
     },
-    "getCompeniesResopnse": {
+    "getCompaniesResopnse": {
       "type": "object",
       "additionalProperties": false,
       "required": ["repdata"],
@@ -115,20 +115,377 @@
                   "TxtMsg": {
                     "type": "string",
                     "description": "Error message"
-                  },
-                  "transaction": {
-                    "$ref": "#/components/schemas/Transaction",
-                    "description": "Transaction details"
-                  },
-                  "record": {
-                    "$ref": "#/components/schemas/Record",
-                    "description": "Record details"
                   }
                 }
               },
               "description": "Batch check errors list"
             }
           ]
+        }
+      }
+    },
+    "getTransactionsResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repdata"],
+      "properties": {
+        "repdata": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/components/Transaction"
+          }
+        }
+      }
+    },
+    "getBatchResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repdata"],
+      "properties": {
+        "repdata": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/components/Batch"
+          }
+        }
+      }
+    },
+    "getRecordsResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repdata"],
+      "properties": {
+        "repdata": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/components/Record"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "Transaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["batchId", "id"],
+      "properties": {
+        "authorizedDealerNumber": {
+          "type": "string",
+          "description": "VAT registration number (max [20 or 9?] characters)"
+        },
+        "batchId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Batch Identifier"
+        },
+        "branch": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Branch"
+        },
+        "branchName": {
+          "type": "string",
+          "description": "Branch Name"
+        },
+        "chequeId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Cheque Identifier"
+        },
+        "costingCode": {
+          "type": "string",
+          "description": "Code of cost center (existing code)"
+        },
+        "costingCodeName": {
+          "type": "string",
+          "description": "Cost-center code name"
+        },
+        "costingCodeFilter": {
+          "type": "string",
+          "description": "Cost-center code filter"
+        },
+        "creditorId": {
+          "type": "string",
+          "description": "Main credit account identifier (max 15 charactes)"
+        },
+        "currencyCode": {
+          "type": "string",
+          "description": "Currency"
+        },
+        "date3": {
+          "type": "string",
+          "description": "Additional date"
+        },
+        "debtorId": {
+          "type": "string",
+          "description": "Main debit account identifier (max 15 charactes)"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description (max 250 characters)"
+        },
+        "details1": {
+          "type": "string",
+          "description": "Remarks (max 50 characters)"
+        },
+        "details2": {
+          "type": "string",
+          "description": "Additional remarks (max 50 characters)"
+        },
+        "dueDate": {
+          "type": "string",
+          "description": "Due date"
+        },
+        "exchangeRateDifferences": {
+          "type": "string",
+          "description": "exchange rate differences"
+        },
+        "foreignCurrencySum": {
+          "type": "number",
+          "format": "float",
+          "description": "Total amount in foreign currency"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Transaction Identifier"
+        },
+        "inventoryId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Inventory Identifier"
+        },
+        "linkedFile": {
+          "type": "string",
+          "description": "Linked file"
+        },
+        "quantity": {
+          "type": "number",
+          "format": "float",
+          "description": "Quantity"
+        },
+        "reference1": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Reference"
+        },
+        "reference2": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Reference-2"
+        },
+        "reference3": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Referenc-3"
+        },
+        "registerNumber": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Register number"
+        },
+        "shekelSum": {
+          "type": "number",
+          "format": "float",
+          "description": "Total NIS amount"
+        },
+        "stornoCancelledTransactionId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Identifier of transaction cancelled by Strogno"
+        },
+        "type": {
+          "type": "string",
+          "description": "Transaction type code"
+        },
+        "userName": {
+          "type": "string",
+          "description": "User name"
+        },
+        "valueDate": {
+          "type": "string",
+          "description": "Date"
+        }
+      }
+    },
+    "Batch": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A Single Batch",
+      "required": ["id"],
+      "properties": {
+        "details": {
+          "type": "string",
+          "description": "Remarks"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Batch identifier"
+        },
+        "initDate": {
+          "type": "string",
+          "description": "Initiate date"
+        },
+        "initTime": {
+          "type": "string",
+          "description": "Initiate time"
+        },
+        "issueDate": {
+          "type": "string",
+          "description": "Issue date"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type"
+        }
+      }
+    },
+    "Record": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A Single Record",
+      "required": ["accountId", "batchId", "id", "transactionId"],
+      "properties": {
+        "accountId": {
+          "type": "string",
+          "description": "Main account details identifier"
+        },
+        "batchId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Batch identifier"
+        },
+        "counterAccountId": {
+          "type": "string",
+          "description": "Counter account identifier"
+        },
+        "counterAccountName": {
+          "type": "string",
+          "description": "Counter account name"
+        },
+        "cumulativeBalance": {
+          "type": "number",
+          "format": "float",
+          "description": "Cumulative balance"
+        },
+        "cumulativeBalanceByFilter": {
+          "type": "number",
+          "format": "float",
+          "description": "Cumulative balance by filter"
+        },
+        "cumulativeBalanceBySortKey": {
+          "type": "number",
+          "format": "float",
+          "description": "Cumulative balance by sorting code"
+        },
+        "cumulativeBalanceOfOpenSumInRecord": {
+          "type": "number",
+          "format": "float",
+          "description": "Cumulative balance of total open amount of record"
+        },
+        "cumulativeBalanceWithoutOpeningBalance": {
+          "type": "number",
+          "format": "float",
+          "description": "Cumulative balance without opening balance"
+        },
+        "debitOrCredit": {
+          "type": "string",
+          "enum": ["חובה", "זכות"],
+          "description": "Credit / Debit"
+        },
+        "debitOrCreditNumber": {
+          "type": "integer",
+          "enum": [-1, 1],
+          "description": "Credit / Debit"
+        },
+        "estimatedSum": {
+          "type": "number",
+          "format": "float",
+          "description": "Estimated total amount"
+        },
+        "foreignCurrencyCredit": {
+          "type": ["number", "null"],
+          "format": "float",
+          "description": "Credit amount in foreign currency"
+        },
+        "foreignCurrencyCumulativeBalance": {
+          "type": "number",
+          "format": "float",
+          "description": "Cumulative balance in foreign currency"
+        },
+        "foreignCurrencyCumulativeBalanceWithoutOpeningBalance": {
+          "type": "number",
+          "format": "float",
+          "description": "Cumulative balance in foreign currency without opening balance"
+        },
+        "foreignCurrencyDebit": {
+          "type": ["number", "null"],
+          "format": "float",
+          "description": "Dedit amount in foreign currency"
+        },
+        "foreignCurrencySum": {
+          "type": "number",
+          "format": "float",
+          "description": "Total amount in foreign currency"
+        },
+        "foreignCurrencySumClosedInRecord": {
+          "type": "number",
+          "format": "float",
+          "description": "Total amount in foreign currency closed in record"
+        },
+        "foreignCurrencySumOpenInRecord": {
+          "type": "number",
+          "format": "float",
+          "description": "Total amount in foreign currency open  in record"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Record identifier"
+        },
+        "matchNumberCardAnalysis": {
+          "type": ["integer", "null"],
+          "format": "int32",
+          "description": "Match number - card analysis"
+        },
+        "shekelCredit": {
+          "type": ["number", "null"],
+          "format": "float",
+          "description": "Credit amount in NIS"
+        },
+        "shekelDebit": {
+          "type": ["number", "null"],
+          "format": "float",
+          "description": "Dedit amount in NIS"
+        },
+        "shekelSum": {
+          "type": "number",
+          "format": "float",
+          "description": "Total NIS amount"
+        },
+        "shekelSumClosedInRecord": {
+          "type": "number",
+          "format": "float",
+          "description": "Total NIS amount closed in record"
+        },
+        "shekelSumOpenInRecord": {
+          "type": "number",
+          "format": "float",
+          "description": "Total NIS amount open  in record"
+        },
+        "transactionId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Transaction identifier"
         }
       }
     }
