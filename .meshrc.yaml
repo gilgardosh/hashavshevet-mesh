@@ -67,7 +67,7 @@ sources:
             field: getAccounts
             path: /ExportDataApi/exportData
             method: POST
-            responseTypeName: getAccountsResponse
+            responseSchema: ./json-schemas/getAccountsResponse.json
           # importAccounts (importIndexRecords)
           # importItems (importIndexRecords)
           # deleteIndexRecords
@@ -77,13 +77,13 @@ sources:
             path: /ExportDataApi/exportData
             method: POST
             requestSchema: ./json-schemas/getBankPageRecordsRequest.json
-            responseTypeName: getBankPageRecordsResponse
+            responseSchema: ./json-schemas/getBankPageRecordsResponse.json
           - type: Mutation
             field: importBankPage
             path: /BankPagesApi/importBankPage
             method: POST
             requestSchema: ./json-schemas/importBankPageRequest.json
-            responseTypeName: importBankPageResponse
+            responseSchema: ./json-schemas/importBankPageResponse.json
 
             # createDocument
             # showDocument
@@ -98,15 +98,15 @@ sources:
           mode: bare
           compositions:
             - resolver: Query.getRecords
-              composer: ./src/resolvers/mesh-resolvers#getRecordsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getRecordsResolver
             - resolver: Query.getTransactions
-              composer: ./src/resolvers/mesh-resolvers#getTransactionsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getTransactionsResolver
             - resolver: Query.getBatch
-              composer: ./src/resolvers/mesh-resolvers#getBatchResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getBatchResolver
             - resolver: Query.getAccounts
-              composer: ./src/resolvers/mesh-resolvers#getAccountsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getAccountsResolver
             - resolver: Query.getBankPageRecords
-              composer: ./src/resolvers/mesh-resolvers#getBankPageRecordsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getBankPageRecordsResolver
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
@@ -128,4 +128,4 @@ additionalTypeDefs: |
   }
 
 additionalResolvers:
-  - ./src/resolvers/mesh-resolvers
+  - ./src/resolvers/mesh-resolvers.ts
