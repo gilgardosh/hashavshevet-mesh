@@ -751,13 +751,13 @@
     "@n1ru4l/graphql-live-query" "0.7.1"
     "@n1ru4l/in-memory-live-query-store" "0.6.4"
 
-"@graphql-mesh/transform-resolvers-composition@0.9.8":
-  version "0.9.8"
-  resolved "https://registry.npmjs.org/@graphql-mesh/transform-resolvers-composition/-/transform-resolvers-composition-0.9.8.tgz"
-  integrity sha512-O6SL8dTKEIlpR2ofSMGAEv6WwjXeM8cXYOnVVHGqhmkYmJTSwvjpp8mWE1pIpg/ArLzSU947pyasZKmCE0GdTA==
+"@graphql-mesh/transform-resolvers-composition@0.9.9":
+  version "0.9.9"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/transform-resolvers-composition/-/transform-resolvers-composition-0.9.9.tgz#d1df9e4295072afe378f61d15f740b2b6bc2eac7"
+  integrity sha512-KKlq0WHXhxUxKjZBkk104StBzqQXfkCHqlXfuOFO5/YY0k93TCCBn8NB0y9QZxicRmTitIMzzyRKyJwkS0XsJA==
   dependencies:
     "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.11.4"
+    "@graphql-mesh/utils" "0.12.0"
     "@graphql-tools/resolvers-composition" "6.2.8"
     "@graphql-tools/schema" "7.1.5"
 
