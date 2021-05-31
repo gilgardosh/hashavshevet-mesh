@@ -635,27 +635,6 @@
     ws "7.4.6"
     yargs "17.0.1"
 
-"@graphql-mesh/config@0.16.5":
-  version "0.16.5"
-  resolved "https://registry.npmjs.org/@graphql-mesh/config/-/config-0.16.5.tgz"
-  integrity sha512-Kky2uEVvOZspZIGrpRStqpZr80+NsKthIFjwNqkwIScwKc8zmTMzNUn8XnibNefWS2y8gfGsFBGsD1IUpa0lQg==
-  dependencies:
-    "@graphql-mesh/cache-inmemory-lru" "0.5.5"
-    "@graphql-mesh/merger-stitching" "0.9.7"
-    "@graphql-mesh/runtime" "0.16.5"
-    "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.11.4"
-    "@graphql-tools/code-file-loader" "6.3.1"
-    "@graphql-tools/graphql-file-loader" "6.2.7"
-    "@graphql-tools/load" "6.2.8"
-    "@graphql-tools/merge" "6.2.13"
-    "@graphql-tools/utils" "7.9.1"
-    ajv "8.3.0"
-    cosmiconfig "7.0.0"
-    graphql-subscriptions "1.2.1"
-    lodash "4.17.21"
-    param-case "3.0.4"
-
 "@graphql-mesh/config@0.16.6":
   version "0.16.6"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/config/-/config-0.16.6.tgz#5b48180a96e0a689c7a520f26a4fb7b89aab1aa6"
@@ -694,19 +673,6 @@
     to-json-schema "0.2.5"
     url-join "4.0.1"
 
-"@graphql-mesh/merger-stitching@0.9.7":
-  version "0.9.7"
-  resolved "https://registry.npmjs.org/@graphql-mesh/merger-stitching/-/merger-stitching-0.9.7.tgz"
-  integrity sha512-loJnBXgJfP6a6S1CqfS/NNDrQ3P51A6SGdCR+o08Mnx86SRoXe5uKsrLZB19Oe62pYzh7KlWhdQiCANP5w+6Sw==
-  dependencies:
-    "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.11.4"
-    "@graphql-tools/schema" "7.1.5"
-    "@graphql-tools/stitch" "7.5.2"
-    "@graphql-tools/utils" "7.9.1"
-    "@graphql-tools/wrap" "7.0.8"
-    fetchache "0.1.1"
-
 "@graphql-mesh/merger-stitching@0.9.8":
   version "0.9.8"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/merger-stitching/-/merger-stitching-0.9.8.tgz#35d0fa22fb2e94b902481f6b790a8e44ade586d9"
@@ -719,21 +685,6 @@
     "@graphql-tools/utils" "7.10.0"
     "@graphql-tools/wrap" "7.0.8"
     fetchache "0.1.1"
-
-"@graphql-mesh/runtime@0.16.5":
-  version "0.16.5"
-  resolved "https://registry.npmjs.org/@graphql-mesh/runtime/-/runtime-0.16.5.tgz"
-  integrity sha512-u/FsSlSHmwgv0Gqr01ugixLPntCd0JnGDMnOEzLWAIJhUqLsUJQMzeeoZldduJ2ly+heWQmu2eaQ79IvXGsxwQ==
-  dependencies:
-    "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.11.4"
-    "@graphql-tools/delegate" "7.1.5"
-    "@graphql-tools/resolvers-composition" "6.2.8"
-    "@graphql-tools/schema" "7.1.5"
-    "@graphql-tools/utils" "7.9.1"
-    "@graphql-tools/wrap" "7.0.8"
-    "@n1ru4l/graphql-live-query" "0.7.1"
-    "@n1ru4l/in-memory-live-query-store" "0.6.4"
 
 "@graphql-mesh/runtime@0.16.6":
   version "0.16.6"
@@ -892,19 +843,19 @@
     unixify "1.0.0"
     valid-url "1.0.9"
 
-"@graphql-tools/merge@6.2.13", "@graphql-tools/merge@^6.2.11", "@graphql-tools/merge@^6.2.12":
-  version "6.2.13"
-  resolved "https://registry.npmjs.org/@graphql-tools/merge/-/merge-6.2.13.tgz"
-  integrity sha512-Qjlki0fp+bBQPinhdv7rv24eurvThZ5oIFvGMpLxMZplbw/ovJ2c6llwXr5PCuWAk9HGZsyM9NxxDgtTRfq3dQ==
+"@graphql-tools/merge@6.2.14", "@graphql-tools/merge@^6.2.14":
+  version "6.2.14"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.14.tgz#694e2a2785ba47558e5665687feddd2935e9d94e"
+  integrity sha512-RWT4Td0ROJai2eR66NHejgf8UwnXJqZxXgDWDI+7hua5vNA2OW8Mf9K1Wav1ZkjWnuRp4ztNtkZGie5ISw55ow==
   dependencies:
     "@graphql-tools/schema" "^7.0.0"
     "@graphql-tools/utils" "^7.7.0"
     tslib "~2.2.0"
 
-"@graphql-tools/merge@6.2.14", "@graphql-tools/merge@^6.2.14":
-  version "6.2.14"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.14.tgz#694e2a2785ba47558e5665687feddd2935e9d94e"
-  integrity sha512-RWT4Td0ROJai2eR66NHejgf8UwnXJqZxXgDWDI+7hua5vNA2OW8Mf9K1Wav1ZkjWnuRp4ztNtkZGie5ISw55ow==
+"@graphql-tools/merge@^6.2.11", "@graphql-tools/merge@^6.2.12":
+  version "6.2.13"
+  resolved "https://registry.npmjs.org/@graphql-tools/merge/-/merge-6.2.13.tgz"
+  integrity sha512-Qjlki0fp+bBQPinhdv7rv24eurvThZ5oIFvGMpLxMZplbw/ovJ2c6llwXr5PCuWAk9HGZsyM9NxxDgtTRfq3dQ==
   dependencies:
     "@graphql-tools/schema" "^7.0.0"
     "@graphql-tools/utils" "^7.7.0"
@@ -943,19 +894,6 @@
     "@graphql-tools/utils" "^7.1.2"
     tslib "~2.2.0"
     value-or-promise "1.0.6"
-
-"@graphql-tools/stitch@7.5.2":
-  version "7.5.2"
-  resolved "https://registry.npmjs.org/@graphql-tools/stitch/-/stitch-7.5.2.tgz"
-  integrity sha512-41UJ9iva9nsXfzzPkosZg6H688UPNwOwygY2jxTXvq/Pkbs/sFK5xGa8j4znyKqR4rIpInDr8Doi8pKwkJKXvg==
-  dependencies:
-    "@graphql-tools/batch-delegate" "^7.0.0"
-    "@graphql-tools/delegate" "^7.1.4"
-    "@graphql-tools/merge" "^6.2.11"
-    "@graphql-tools/schema" "^7.1.4"
-    "@graphql-tools/utils" "^7.7.0"
-    "@graphql-tools/wrap" "^7.0.6"
-    tslib "~2.2.0"
 
 "@graphql-tools/stitch@7.5.3":
   version "7.5.3"
@@ -1186,16 +1124,6 @@ acorn@^7.4.0:
   version "7.4.1"
   resolved "https://registry.npmjs.org/acorn/-/acorn-7.4.1.tgz"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
-
-ajv@8.3.0:
-  version "8.3.0"
-  resolved "https://registry.npmjs.org/ajv/-/ajv-8.3.0.tgz"
-  integrity sha512-RYE7B5An83d7eWnDR8kbdaIFqmKCNsP16ay1hDbJEU+sa0e3H9SebskCt0Uufem6cfAVu7Col6ubcn/W+Sm8/Q==
-  dependencies:
-    fast-deep-equal "^3.1.1"
-    json-schema-traverse "^1.0.0"
-    require-from-string "^2.0.2"
-    uri-js "^4.2.2"
 
 ajv@8.5.0, ajv@^8.0.1:
   version "8.5.0"
