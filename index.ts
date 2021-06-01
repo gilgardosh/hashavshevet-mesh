@@ -46,4 +46,6 @@ const login = (wizKey: string, company: string, wizUrl: string) => {
   return p;
 };
 
+export * from './src/generated/sdk';
+
 export default hashMesh;
