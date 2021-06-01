@@ -14,42 +14,42 @@ sources:
             field: getSession
             path: /api/napi
             method: POST
-            responseTypeName: napiResopnse
+            responseTypeName: getSessionResopnse
           - type: Query
             field: getCompanies
             path: /CompanyListToTokenApi/TokenCompanies
             method: POST
-            responseTypeName: getCompeniesResopnse
+            responseTypeName: getCompaniesResopnse
 
           - type: Query
             field: getRecords
             path: /ExportDataApi/exportData
             method: POST
-            responseSchema: ./json-schemas/getRecordsResponse.json
+            responseTypeName: getRecordsResponse
 
           - type: Query
             field: getTransactions
             path: /ExportDataApi/exportData
             method: POST
-            responseSchema: ./json-schemas/getTransactionsResponse.json
+            responseTypeName: getTransactionsResponse
           - type: Mutation
             field: importTransactionsToBatch
             path: /jtransApi/tmpBatch
             method: POST
             requestSchema: ./json-schemas/importTransactionsToBatchRequest.json
-            responseSchema: ./json-schemas/importTransactionsToBatchResponse.json
+            responseTypeName: importTransactionsToBatchResponse
 
           - type: Mutation
             field: createBatch
             path: /jtransApi/newBatch
             method: POST
-            responseSchema: ./json-schemas/newBatchResponse.json
+            responseTypeName: createBatch
           - type: Query
             field: getBatch
             path: /ExportDataApi/exportData
             method: POST
             requestSchema: ./json-schemas/getBatchRequest.json
-            responseSchema: ./json-schemas/getBatchResponse.json
+            responseTypeName: getBatchResponse
           - type: Query
             field: checkBatch
             path: /jtransApi/chkBatch
@@ -61,7 +61,7 @@ sources:
             path: /jtransApi/issueBatch
             method: POST
             requestSchema: ./json-schemas/issueBatchRequest.json
-            responseSchema: ./json-schemas/issueBatchResponse.json
+            responseTypeName: issueBatchResponse
 
           - type: Query
             field: getAccounts
@@ -98,15 +98,34 @@ sources:
           mode: bare
           compositions:
             - resolver: Query.getRecords
-              composer: ./src/resolvers/getRecordsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getRecordsResolver
             - resolver: Query.getTransactions
-              composer: ./src/resolvers/getTransactionsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getTransactionsResolver
             - resolver: Query.getBatch
-              composer: ./src/resolvers/getBatchResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getBatchResolver
             - resolver: Query.getAccounts
-              composer: ./src/resolvers/getAccountsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getAccountsResolver
             - resolver: Query.getBankPageRecords
-              composer: ./src/resolvers/getBankPageRecordsResolver
+              composer: ./src/resolvers/mesh-resolvers.ts#getBankPageRecordsResolver
 serve:
   browser: false
   exampleQuery: ./example-queries/*.graphql
+
+require:
+  - ts-node/register/transpile-only
+
+additionalTypeDefs: |
+  extend type HashavshevetSchemaJsonTransaction {
+    batch: HashavshevetSchemaJsonBatch
+    records: [HashavshevetSchemaJsonRecord]
+  }
+  extend type HashavshevetSchemaJsonBatch {
+    transactions: [HashavshevetSchemaJsonTransaction]
+  }
+  extend type HashavshevetSchemaJsonRecord {
+    transaction: HashavshevetSchemaJsonTransaction
+    batch: HashavshevetSchemaJsonBatch
+  }
+
+additionalResolvers:
+  - ./src/resolvers/mesh-resolvers.ts

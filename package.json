@@ -10,7 +10,7 @@
     "copy-files": "cp .meshrc.yaml dist && cp -a json-schemas/ dist/json-schemas/",
     "mesh:serve": "WIZ_AUTH_TOKEN='SOMETOKEN' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
     "postinstall": "yarn mesh:generate",
-    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
+    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 3",
     "dev": "ts-node ./index.ts",
     "start": "node ./dist"
   },
