@@ -1226,7 +1226,7 @@
               "description": "Bank page's records details list"
             }
           },
-          "description": "A Single BA Single Bank Page (Which Is A List Of Bank Page Records)atch"
+          "description": "A Single Bank Page (Which Is A List Of Bank Page Records)"
         },
         "Company": {
           "type": "object",
