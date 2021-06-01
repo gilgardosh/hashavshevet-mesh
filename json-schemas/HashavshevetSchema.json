@@ -291,6 +291,71 @@
           "description": "Batch issue status"
         }
       }
+    },
+
+    "getBankPageRecordsResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repdata"],
+      "properties": {
+        "repdata": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/components/BankPageRecord"
+          }
+        }
+      }
+    },
+    "importBankPageResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "errors"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["errors", "OK"]
+        },
+        "errors": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["index"],
+            "properties": {
+              "index": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Index"
+              },
+              "field": {
+                "type": "string",
+                "description": "Field name where error occurred"
+              },
+              "err": {
+                "type": "string",
+                "description": "Error description"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "getAccountsResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repdata"],
+      "properties": {
+        "repdata": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/components/Account"
+          }
+        }
+      }
     }
   },
   "components": {
