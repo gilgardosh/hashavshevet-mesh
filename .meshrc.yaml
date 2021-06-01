@@ -67,7 +67,7 @@ sources:
             field: getAccounts
             path: /ExportDataApi/exportData
             method: POST
-            responseSchema: ./json-schemas/getAccountsResponse.json
+            responseTypeName: getAccountsResponse
           # importAccounts (importIndexRecords)
           # importItems (importIndexRecords)
           # deleteIndexRecords
@@ -77,13 +77,13 @@ sources:
             path: /ExportDataApi/exportData
             method: POST
             requestSchema: ./json-schemas/getBankPageRecordsRequest.json
-            responseSchema: ./json-schemas/getBankPageRecordsResponse.json
+            responseTypeName: getBankPageRecordsResponse
           - type: Mutation
             field: importBankPage
             path: /BankPagesApi/importBankPage
             method: POST
             requestSchema: ./json-schemas/importBankPageRequest.json
-            responseSchema: ./json-schemas/importBankPageResponse.json
+            responseTypeName: importBankPageResponse
 
             # createDocument
             # showDocument
