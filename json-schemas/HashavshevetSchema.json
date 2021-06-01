@@ -74,7 +74,7 @@
     "getRecordsResponse": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repdata"],
+      "required": [],
       "properties": {
         "repdata": {
           "type": "array",
@@ -89,7 +89,7 @@
     "getTransactionsResponse": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repdata"],
+      "required": [],
       "properties": {
         "repdata": {
           "type": "array",
@@ -189,7 +189,7 @@
     "getBatchResponse": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repdata"],
+      "required": [],
       "properties": {
         "repdata": {
           "type": "array",
@@ -217,7 +217,7 @@
     "getBankPageRecordsResponse": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repdata"],
+      "required": [],
       "properties": {
         "repdata": {
           "type": "array",
@@ -267,7 +267,7 @@
     "getAccountsResponse": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["repdata"],
+      "required": [],
       "properties": {
         "repdata": {
           "type": "array",
