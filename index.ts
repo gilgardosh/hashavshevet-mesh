@@ -1,10 +1,14 @@
-import { getSdk } from './src/generated/sdk';
+import { getSdk, Sdk } from './src/generated/sdk';
 import { findAndParseConfig } from '@graphql-mesh/config';
-import { getMesh } from '@graphql-mesh/runtime';
+import { ExecuteMeshFn, getMesh } from '@graphql-mesh/runtime';
 import fetch from 'node-fetch';
 import * as path from 'path';
 
-const hashMesh = async (wizPersonalToken: string, wizCompanyKey: string, wizUrl: string) => {
+const init = async (
+  wizPersonalToken: string,
+  wizCompanyKey: string,
+  wizUrl: string,
+): Promise<{ sdk: Sdk; execute: ExecuteMeshFn }> => {
   console.log('initiating sdk...');
 
   process.env.WIZ_URL = wizUrl;
@@ -47,5 +51,4 @@ const login = (wizKey: string, company: string, wizUrl: string) => {
 };
 
 export * from './src/generated/sdk';
-
-export default hashMesh;
+export { init };
