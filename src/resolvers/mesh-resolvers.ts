@@ -52,7 +52,7 @@ export const resolvers: Resolvers = {
       }`,
       resolve: async (root, _args, context) => {
         const result = await context.Hashavshevet.api.getRecords();
-        return result?.repdata.length && result?.repdata.filter((r) => r.transactionId === root.id);
+        return result?.repdata.length && result?.repdata.filter((r) => r && r.transactionId === root.id);
       },
     },
   },
@@ -92,7 +92,7 @@ export const getBatchResolver = (next) => (root, args, context, info) => {
   const parameters = handleBatchParameters(args.input);
   args.input = {
     parameters,
-    batchDataFile,
+    datafile: batchDataFile,
   };
   return next(root, args, context, info);
 };
@@ -104,7 +104,7 @@ export const getBankPageRecordsResolver = (next) => (root, args, context, info) 
   const parameters = handleBankPageRecordsParameters(args.input);
   args.input = {
     parameters,
-    bankPageRecordsDataFile,
+    datafile: bankPageRecordsDataFile,
   };
   return next(root, args, context, info);
 };
