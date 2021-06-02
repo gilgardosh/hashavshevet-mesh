@@ -1,16 +1,18 @@
 {
   "name": "hashavshevet-mesh",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "Graphql server for wrapping Hashavshevet API",
   "scripts": {
     "lint": "eslint './src/*/**/*.{js,ts,tsx}' --quiet --fix",
-    "prebuild": "yarn lint",
+    "prebuild": "yarn lint && yarn generate",
     "build": "tsc",
     "postbuild": "yarn copy-files",
     "copy-files": "cp .meshrc.yaml dist && cp -a json-schemas/ dist/json-schemas/",
     "prepublish": "yarn build",
     "mesh:serve": "WIZ_AUTH_TOKEN='SOMETOKEN' WIZ_URL='lb11.wizcloud.co.il' mesh serve",
-    "mesh:generate": "graphql-mesh typescript --output ./src/generated/mesh.ts && graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
+    "mesh:sdk": "graphql-mesh generate-sdk --output ./src/generated/sdk.ts --depth 99",
+    "mesh:types": "graphql-mesh typescript --output ./src/generated/mesh.ts",
+    "generate": "yarn mesh:sdk && yarn mesh:types",
     "dev": "ts-node ./index.ts",
     "start": "node ./dist"
   },
