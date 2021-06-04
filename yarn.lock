@@ -656,10 +656,10 @@
     lodash "4.17.21"
     param-case "3.0.4"
 
-"@graphql-mesh/json-schema@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.16.0.tgz#76e5ffc9f76a6e5d92bd62e06c229cffe0946f42"
-  integrity sha512-QrgbpgiGaRoY4XCXxL458GP7LftUhDb20fCBSYlYXs/e6v/p01uWOxdNm0uVOnD7VArihSm8lQT+Af2mxc46WQ==
+"@graphql-mesh/json-schema@0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/json-schema/-/json-schema-0.16.1.tgz#ff0b94fa28369639a89a8fe3d0f9a81abde837b1"
+  integrity sha512-d8NyfzklgpDe6vIiSZZipy5AIzVqhm6LZG1pIlYTDvGuRmrILRXd7hu8Iee1LOJmcJlecHz6RiOliGaMEbdE1w==
   dependencies:
     "@ardatan/aggregate-error" "0.0.6"
     "@graphql-mesh/types" "0.42.0"
