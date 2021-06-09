@@ -598,18 +598,18 @@
     "@types/lru-cache" "5.1.0"
     lru-cache "6.0.0"
 
-"@graphql-mesh/cli@0.30.1":
-  version "0.30.1"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.30.1.tgz#e442be1e929da7bf94fee6dc4f46007e18281560"
-  integrity sha512-q0x+Yd3McIdcfh93mvTNzXhd2/TIvCCbZbzs/zakh4m7S+dd4Y9+M1nUr2TIPBQM3H0mcqwfc/J5Og9wHJKMmw==
+"@graphql-mesh/cli@0.30.2":
+  version "0.30.2"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/cli/-/cli-0.30.2.tgz#c1bdfec1a92e23a5a672f4ca5e32a9f741f6d5b4"
+  integrity sha512-dqkAHgHumENXUJjcACP26zxbdCFltBQQs5Ly1IcDbqQcHC+kjeIrPWIy1OXBE0BRZ7AhzncOnSG/TKEMxcPoNQ==
   dependencies:
     "@graphql-codegen/core" "1.17.10"
     "@graphql-codegen/typescript" "1.22.1"
     "@graphql-codegen/typescript-generic-sdk" "1.17.11"
     "@graphql-codegen/typescript-operations" "1.18.0"
     "@graphql-codegen/typescript-resolvers" "1.19.2"
-    "@graphql-mesh/config" "0.16.6"
-    "@graphql-mesh/runtime" "0.16.6"
+    "@graphql-mesh/config" "0.17.0"
+    "@graphql-mesh/runtime" "0.17.0"
     "@graphql-mesh/utils" "0.12.0"
     "@graphql-tools/code-file-loader" "6.3.1"
     "@graphql-tools/graphql-file-loader" "6.2.7"
@@ -623,13 +623,13 @@
     express "4.17.1"
     graphql-helix "1.6.1"
     graphql-upload "12.0.0"
-    graphql-ws "4.5.1"
+    graphql-ws "5.0.0"
     js-yaml "4.1.0"
     json-bigint-patch "0.0.4"
     lodash "4.17.21"
     mkdirp "1.0.4"
     open "7.4.2"
-    ora "5.4.0"
+    ora "5.4.1"
     pascal-case "3.1.2"
     winston "3.3.3"
     ws "7.4.6"
@@ -651,6 +651,27 @@
     "@graphql-tools/merge" "6.2.14"
     "@graphql-tools/utils" "7.10.0"
     ajv "8.5.0"
+    cosmiconfig "7.0.0"
+    graphql-subscriptions "1.2.1"
+    lodash "4.17.21"
+    param-case "3.0.4"
+
+"@graphql-mesh/config@0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/config/-/config-0.17.0.tgz#a7713bc4b95b17a80171e7786a3947bd29d6d452"
+  integrity sha512-YeaBZKMrL8njfUt/mYYcS7qntWS9M/PB/w8s59mD3yjVYEmUuWQWlEgZKDsb34veBfNC07l4DFhzufFpO9kr0Q==
+  dependencies:
+    "@graphql-mesh/cache-inmemory-lru" "0.5.5"
+    "@graphql-mesh/merger-stitching" "0.9.8"
+    "@graphql-mesh/runtime" "0.17.0"
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.12.0"
+    "@graphql-tools/code-file-loader" "6.3.1"
+    "@graphql-tools/graphql-file-loader" "6.2.7"
+    "@graphql-tools/load" "6.2.8"
+    "@graphql-tools/merge" "6.2.14"
+    "@graphql-tools/utils" "7.10.0"
+    ajv "8.6.0"
     cosmiconfig "7.0.0"
     graphql-subscriptions "1.2.1"
     lodash "4.17.21"
@@ -700,6 +721,21 @@
     "@graphql-tools/wrap" "7.0.8"
     "@n1ru4l/graphql-live-query" "0.7.1"
     "@n1ru4l/in-memory-live-query-store" "0.6.4"
+
+"@graphql-mesh/runtime@0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@graphql-mesh/runtime/-/runtime-0.17.0.tgz#a2e33e30ace3ef44795aac83249b17366e7f44c0"
+  integrity sha512-Flgf5yzxlfzKwHeB2pJfZL+L8XmWi5IoAhMt71yfYtlv1nN0JbS9O2geUDM7pFHpoIHEbUdgQlsv25T1M11Ejw==
+  dependencies:
+    "@graphql-mesh/types" "0.42.0"
+    "@graphql-mesh/utils" "0.12.0"
+    "@graphql-tools/delegate" "7.1.5"
+    "@graphql-tools/resolvers-composition" "6.2.8"
+    "@graphql-tools/schema" "7.1.5"
+    "@graphql-tools/utils" "7.10.0"
+    "@graphql-tools/wrap" "7.0.8"
+    "@n1ru4l/graphql-live-query" "0.7.1"
+    "@n1ru4l/in-memory-live-query-store" "0.6.5"
 
 "@graphql-mesh/transform-resolvers-composition@0.9.9":
   version "0.9.9"
@@ -937,6 +973,15 @@
     "@n1ru4l/graphql-live-query" "0.7.1"
     "@n1ru4l/push-pull-async-iterable-iterator" "^2.1.4"
 
+"@n1ru4l/in-memory-live-query-store@0.6.5":
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/@n1ru4l/in-memory-live-query-store/-/in-memory-live-query-store-0.6.5.tgz#17dbd198b70da34ea7d8b05098945bbd3b2dbecc"
+  integrity sha512-Yj9ova+t3TKuD5HFkqEBnjI1apNSEXq0JDqH41xz6ArWDLVY9e9kZMQBmIXe2iTeaKtkYOhcmrw2kdjITZaiqw==
+  dependencies:
+    "@graphql-tools/utils" "^7.7.1"
+    "@n1ru4l/graphql-live-query" "0.7.1"
+    "@n1ru4l/push-pull-async-iterable-iterator" "^2.1.4"
+
 "@n1ru4l/push-pull-async-iterable-iterator@^2.1.4":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@n1ru4l/push-pull-async-iterable-iterator/-/push-pull-async-iterable-iterator-2.1.4.tgz"
@@ -1110,6 +1155,16 @@ ajv@8.5.0, ajv@^8.0.1:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.5.0.tgz#695528274bcb5afc865446aa275484049a18ae4b"
   integrity sha512-Y2l399Tt1AguU3BPRP9Fn4eN+Or+StUGWCUpbnFyXSo8NZ9S4uj+AG2pjs5apK+ZMOwYOz1+a+VKvKH7CudXgQ==
+  dependencies:
+    fast-deep-equal "^3.1.1"
+    json-schema-traverse "^1.0.0"
+    require-from-string "^2.0.2"
+    uri-js "^4.2.2"
+
+ajv@8.6.0:
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.6.0.tgz#60cc45d9c46a477d80d92c48076d972c342e5720"
+  integrity sha512-cnUG4NSBiM4YFBxgZIj/In3/6KX+rQ2l2YPRVcvAMQGWEPKuXoPIhxzwqh31jA3IPbI4qEOp/5ILI4ynioXsGQ==
   dependencies:
     fast-deep-equal "^3.1.1"
     json-schema-traverse "^1.0.0"
@@ -2431,10 +2486,10 @@ graphql-upload@12.0.0:
     isobject "^4.0.0"
     object-path "^0.11.5"
 
-graphql-ws@4.5.1:
-  version "4.5.1"
-  resolved "https://registry.npmjs.org/graphql-ws/-/graphql-ws-4.5.1.tgz"
-  integrity sha512-GE7vCMKe2D7fc0ugkM1V8QMneHcbV9c3BpPBzdlW/Uzkqv0F/zZq9DDHxLzg55ZhE5OSLL+n/gyqAMPgH59hcw==
+graphql-ws@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/graphql-ws/-/graphql-ws-5.0.0.tgz#30f55a649f8dc825c51b6f7cfc05e513688c4f8d"
+  integrity sha512-SSSn5xQB5bDtmIwn2Rkw9WakrNbkDvPP5B7J5pKhFoDfQkF5xs9BaqelsGljoRs4rrdmWq9xw/QVtEXmjImZQA==
 
 graphql@15.5.0:
   version "15.5.0"
@@ -3237,10 +3292,10 @@ optionator@^0.9.1:
     type-check "^0.4.0"
     word-wrap "^1.2.3"
 
-ora@5.4.0:
-  version "5.4.0"
-  resolved "https://registry.npmjs.org/ora/-/ora-5.4.0.tgz"
-  integrity sha512-1StwyXQGoU6gdjYkyVcqOLnVlbKj+6yPNNOxJVgpt9t4eksKjiriiHuxktLYkgllwk+D6MbC4ihH84L1udRXPg==
+ora@5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/ora/-/ora-5.4.1.tgz#1b2678426af4ac4a509008e5e4ac9e9959db9e18"
+  integrity sha512-5b6Y85tPxZZ7QytO+BQzysW31HJku27cRIlkbAXaNx+BdcVi+LlRFmVXzeF6a7JCwJpyw5c4b+YSVImQIrBpuQ==
   dependencies:
     bl "^4.1.0"
     chalk "^4.1.0"
