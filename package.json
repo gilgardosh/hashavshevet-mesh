@@ -17,7 +17,7 @@
     "start": "node ./dist"
   },
   "main": "dist/index.js",
-  "export": "dist/index.js",
+  "exports": "./dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
