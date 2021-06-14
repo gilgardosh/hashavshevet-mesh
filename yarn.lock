@@ -635,27 +635,6 @@
     ws "7.4.6"
     yargs "17.0.1"
 
-"@graphql-mesh/config@0.16.6":
-  version "0.16.6"
-  resolved "https://registry.yarnpkg.com/@graphql-mesh/config/-/config-0.16.6.tgz#5b48180a96e0a689c7a520f26a4fb7b89aab1aa6"
-  integrity sha512-zWzZY1epubfL2wtbZkjozTBmc3btVvfqEjoNijLUTYr+qnBbWO7f/OGeMPeqpqv1Vtw0lcgCxNGvfoALaRm3IQ==
-  dependencies:
-    "@graphql-mesh/cache-inmemory-lru" "0.5.5"
-    "@graphql-mesh/merger-stitching" "0.9.8"
-    "@graphql-mesh/runtime" "0.16.6"
-    "@graphql-mesh/types" "0.42.0"
-    "@graphql-mesh/utils" "0.12.0"
-    "@graphql-tools/code-file-loader" "6.3.1"
-    "@graphql-tools/graphql-file-loader" "6.2.7"
-    "@graphql-tools/load" "6.2.8"
-    "@graphql-tools/merge" "6.2.14"
-    "@graphql-tools/utils" "7.10.0"
-    ajv "8.5.0"
-    cosmiconfig "7.0.0"
-    graphql-subscriptions "1.2.1"
-    lodash "4.17.21"
-    param-case "3.0.4"
-
 "@graphql-mesh/config@0.17.0":
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/@graphql-mesh/config/-/config-0.17.0.tgz#a7713bc4b95b17a80171e7786a3947bd29d6d452"
