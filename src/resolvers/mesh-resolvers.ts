@@ -112,7 +112,7 @@ export const resolvers: Resolvers = {
           return [];
         }
         const result = await context.Hashavshevet.api.getRecords({});
-        return result?.repdata.length && result?.repdata.filter((r) => r && r.transactionId === root.id);
+        return result?.repdata.length && result?.repdata.filter((r) => r.transactionId === root.id);
       },
     },
     creditor: {
