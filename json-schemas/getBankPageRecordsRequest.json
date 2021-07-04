@@ -4,11 +4,23 @@
   "additionalProperties": false,
   "required": [],
   "properties": {
-    "minID": {
+    "idMin": {
       "type": "integer"
     },
-    "maxID": {
+    "idMax": {
       "type": "integer"
+    },
+    "bankPageIdMin": {
+      "type": "integer"
+    },
+    "bankPageIdMax": {
+      "type": "integer"
+    },
+    "dateMin": {
+      "type": "string"
+    },
+    "dateMax": {
+      "type": "string"
     }
   }
 }
