@@ -149,40 +149,6 @@ export const resolvers: Resolvers = {
         return result?.repdata.length && result?.repdata[0];
       },
     },
-    creditor: {
-      selectionSet: `{
-        creditorId
-      }`,
-      resolve: async (root, _args, context) => {
-        if (!root.creditorId) {
-          return null;
-        }
-        const result = await context.Hashavshevet.api.getAccounts({
-          input: {
-            idMin: root.creditorId,
-            idMax: root.creditorId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
-      },
-    },
-    debtor: {
-      selectionSet: `{
-        debtorId
-      }`,
-      resolve: async (root, _args, context) => {
-        if (!root.debtorId) {
-          return null;
-        }
-        const result = await context.Hashavshevet.api.getAccounts({
-          input: {
-            idMin: root.debtorId,
-            idMax: root.debtorId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
-      },
-    },
   },
   HashavshevetSchemaJsonBatch: {
     transactions: {
