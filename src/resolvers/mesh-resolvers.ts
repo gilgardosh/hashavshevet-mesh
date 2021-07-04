@@ -21,6 +21,9 @@ export const resolvers: Resolvers = {
       batchId
     }`,
       resolve: async (root, _args, context) => {
+        if (!root.batchId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getBatch({
           input: {
             idMin: root.batchId,
@@ -35,6 +38,9 @@ export const resolvers: Resolvers = {
         transactionId
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.transactionId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getTransactions({
           input: {
             idMin: root.transactionId,
@@ -49,6 +55,9 @@ export const resolvers: Resolvers = {
         accountId
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.accountId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getAccounts({
           input: {
             idMin: root.accountId,
@@ -63,6 +72,9 @@ export const resolvers: Resolvers = {
         counterAccountId
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.counterAccountId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getAccounts({
           input: {
             idMin: root.counterAccountId,
@@ -79,6 +91,9 @@ export const resolvers: Resolvers = {
       batchId
     }`,
       resolve: async (root, _args, context) => {
+        if (!root.batchId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getBatch({
           input: {
             idMin: root.batchId,
@@ -93,6 +108,9 @@ export const resolvers: Resolvers = {
         id
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.id) {
+          return [];
+        }
         const result = await context.Hashavshevet.api.getRecords({});
         return result?.repdata.length && result?.repdata.filter((r) => r && r.transactionId === root.id);
       },
@@ -102,6 +120,9 @@ export const resolvers: Resolvers = {
         creditorId
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.creditorId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getAccounts({
           input: {
             idMin: root.creditorId,
@@ -116,6 +137,9 @@ export const resolvers: Resolvers = {
         debtorId
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.debtorId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getAccounts({
           input: {
             idMin: root.debtorId,
@@ -132,6 +156,9 @@ export const resolvers: Resolvers = {
         batchId
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.id) {
+          return [];
+        }
         const result = await context.Hashavshevet.api.getTransactions({
           input: {
             batchIdMin: root.id,
@@ -148,6 +175,9 @@ export const resolvers: Resolvers = {
         accountId
       }`,
       resolve: async (root, _args, context) => {
+        if (!root.accountId) {
+          return null;
+        }
         const result = await context.Hashavshevet.api.getAccounts({
           input: {
             idMin: root.accountId,
