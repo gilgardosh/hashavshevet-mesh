@@ -430,6 +430,15 @@
       "description": "A Single Batch",
       "required": ["id"],
       "properties": {
+        "amount": {
+          "type": "number"
+        },
+        "creditAmount": {
+          "type": "number"
+        },
+        "debitAmount": {
+          "type": "number"
+        },
         "details": {
           "type": "string",
           "description": "Remarks"
@@ -511,7 +520,6 @@
         },
         "debitOrCredit": {
           "type": "string",
-          "enum": ["חובה", "זכות"],
           "description": "Credit / Debit"
         },
         "debitOrCreditNumber": {
@@ -678,7 +686,6 @@
         },
         "debitOrCredit": {
           "type": "string",
-          "enum": ["חובה", "זכות"],
           "description": "Credit / Debit"
         },
         "details": {
