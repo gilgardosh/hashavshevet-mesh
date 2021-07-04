@@ -25,12 +25,14 @@ sources:
             field: getRecords
             path: /ExportDataApi/exportData
             method: POST
+            requestSchema: ./json-schemas/getRecordsRequest.json
             responseTypeName: getRecordsResponse
 
           - type: Query
             field: getTransactions
             path: /ExportDataApi/exportData
             method: POST
+            requestSchema: ./json-schemas/getTransactionsRequest.json
             responseTypeName: getTransactionsResponse
           - type: Mutation
             field: importTransactionsToBatch
@@ -67,6 +69,7 @@ sources:
             field: getAccounts
             path: /ExportDataApi/exportData
             method: POST
+            requestSchema: ./json-schemas/getAccountsRequest.json
             responseTypeName: getAccountsResponse
           # importAccounts (importIndexRecords)
           # importItems (importIndexRecords)
@@ -118,6 +121,8 @@ additionalTypeDefs: |
   extend type HashavshevetSchemaJsonTransaction {
     batch: HashavshevetSchemaJsonBatch
     records: [HashavshevetSchemaJsonRecord]
+    creditor: HashavshevetSchemaJsonAccount
+    debtor: HashavshevetSchemaJsonAccount
   }
   extend type HashavshevetSchemaJsonBatch {
     transactions: [HashavshevetSchemaJsonTransaction]
@@ -125,6 +130,11 @@ additionalTypeDefs: |
   extend type HashavshevetSchemaJsonRecord {
     transaction: HashavshevetSchemaJsonTransaction
     batch: HashavshevetSchemaJsonBatch
+    account: HashavshevetSchemaJsonAccount
+    counterAccount: HashavshevetSchemaJsonAccount
+  }
+  extend type HashavshevetSchemaJsonBankPageRecord {
+    account: HashavshevetSchemaJsonAccount
   }
 
 additionalResolvers:
