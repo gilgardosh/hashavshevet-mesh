@@ -283,7 +283,7 @@
     "Transaction": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["batchId", "id"],
+      "required": [],
       "properties": {
         "authorizedDealerNumber": {
           "type": "string",
@@ -428,7 +428,7 @@
       "type": "object",
       "additionalProperties": false,
       "description": "A Single Batch",
-      "required": ["id"],
+      "required": [],
       "properties": {
         "amount": {
           "type": "number"
@@ -474,7 +474,7 @@
       "type": "object",
       "additionalProperties": false,
       "description": "A Single Record",
-      "required": ["accountId", "batchId", "id", "transactionId"],
+      "required": [],
       "properties": {
         "accountId": {
           "type": "string",
@@ -651,7 +651,7 @@
       "type": "object",
       "additionalProperties": false,
       "description": "A Single Bank Page Record",
-      "required": ["id", "bankPageId"],
+      "required": [],
       "properties": {
         "accountId": {
           "type": "string",
@@ -718,7 +718,7 @@
       "description": "A Single Account",
       "type": "object",
       "additionalProperties": false,
-      "required": ["id"],
+      "required": [],
       "properties": {
         "accountantTransfer": {
           "type": "string"

@@ -1,9 +1,14 @@
 import {
   GetAccountsRequestJsonRequest,
+  GetAccountsResponse,
   GetBankPageRecordsRequestJsonRequest,
+  GetBankPageRecordsResponse,
   GetBatchRequestJsonRequest,
+  GetBatchResponse,
   GetRecordsRequestJsonRequest,
+  GetRecordsResponse,
   GetTransactionsRequestJsonRequest,
+  GetTransactionsResponse,
   Resolvers,
 } from '../generated/mesh';
 import {
@@ -24,13 +29,18 @@ export const resolvers: Resolvers = {
         if (!root.batchId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getBatch({
-          input: {
-            idMin: root.batchId,
-            idMax: root.batchId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getBatch({
+            input: {
+              idMin: root.batchId,
+              idMax: root.batchId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find batch id='${root.batchId}'`);
+          return null;
+        }
       },
     },
     transaction: {
@@ -41,13 +51,18 @@ export const resolvers: Resolvers = {
         if (!root.transactionId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getTransactions({
-          input: {
-            idMin: root.transactionId,
-            idMax: root.transactionId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getTransactions({
+            input: {
+              idMin: root.transactionId,
+              idMax: root.transactionId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find transaction id='${root.transactionId}'`);
+          return null;
+        }
       },
     },
     account: {
@@ -58,13 +73,18 @@ export const resolvers: Resolvers = {
         if (!root.accountId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getAccounts({
-          input: {
-            idMin: root.accountId,
-            idMax: root.accountId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getAccounts({
+            input: {
+              idMin: root.accountId,
+              idMax: root.accountId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find account id='${root.accountId}'`);
+          return null;
+        }
       },
     },
     counterAccount: {
@@ -75,13 +95,18 @@ export const resolvers: Resolvers = {
         if (!root.counterAccountId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getAccounts({
-          input: {
-            idMin: root.counterAccountId,
-            idMax: root.counterAccountId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getAccounts({
+            input: {
+              idMin: root.counterAccountId,
+              idMax: root.counterAccountId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find account id='${root.accountId}'`);
+          return null;
+        }
       },
     },
   },
@@ -94,13 +119,18 @@ export const resolvers: Resolvers = {
         if (!root.batchId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getBatch({
-          input: {
-            idMin: root.batchId,
-            idMax: root.batchId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getBatch({
+            input: {
+              idMin: root.batchId,
+              idMax: root.batchId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find batch id='${root.batchId}'`);
+          return null;
+        }
       },
     },
     records: {
@@ -123,13 +153,18 @@ export const resolvers: Resolvers = {
         if (!root.creditorId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getAccounts({
-          input: {
-            idMin: root.creditorId,
-            idMax: root.creditorId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getAccounts({
+            input: {
+              idMin: root.creditorId,
+              idMax: root.creditorId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find account id='${root.creditorId}'`);
+          return null;
+        }
       },
     },
     debtor: {
@@ -140,13 +175,18 @@ export const resolvers: Resolvers = {
         if (!root.debtorId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getAccounts({
-          input: {
-            idMin: root.debtorId,
-            idMax: root.debtorId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getAccounts({
+            input: {
+              idMin: root.debtorId,
+              idMax: root.debtorId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find account id='${root.debtorId}'`);
+          return null;
+        }
       },
     },
   },
@@ -178,13 +218,18 @@ export const resolvers: Resolvers = {
         if (!root.accountId) {
           return null;
         }
-        const result = await context.Hashavshevet.api.getAccounts({
-          input: {
-            idMin: root.accountId,
-            idMax: root.accountId,
-          },
-        });
-        return result?.repdata.length && result?.repdata[0];
+        try {
+          const result = await context.Hashavshevet.api.getAccounts({
+            input: {
+              idMin: root.accountId,
+              idMax: root.accountId,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find account id='${root.accountId}'`);
+          return null;
+        }
       },
     },
   },
@@ -286,13 +331,17 @@ const handleRecordsFilterParameters = (args: GetRecordsRequestJsonRequest = {}) 
   return parametersArray;
 };
 
-export const getRecordsResolver = (next) => (root, args, context, info) => {
+export const getRecordsResolver = (next) => async (root, args, context, info) => {
   const parameters = handleRecordsFilterParameters(args.input);
   args.input = {
     parameters,
     datafile: recordsDataFile,
   };
-  return next(root, args, context, info);
+  const data = (await next(root, args, context, info)) as GetRecordsResponse;
+  if (data.repdata?.length && !data.repdata?.[0].id) {
+    return null;
+  }
+  return data;
 };
 
 const handleTransactionsFilterParameters = (args: GetTransactionsRequestJsonRequest = {}) => {
@@ -428,13 +477,17 @@ const handleTransactionsFilterParameters = (args: GetTransactionsRequestJsonRequ
   return parametersArray;
 };
 
-export const getTransactionsResolver = (next) => (root, args, context, info) => {
+export const getTransactionsResolver = (next) => async (root, args, context, info) => {
   const parameters = handleTransactionsFilterParameters(args.input);
   args.input = {
     parameters,
     datafile: transactionsDataFile,
   };
-  return next(root, args, context, info);
+  const data = (await next(root, args, context, info)) as GetTransactionsResponse;
+  if (data.repdata?.length && !data.repdata?.[0].id) {
+    return null;
+  }
+  return data;
 };
 
 const handleBatchParameters = (args: GetBatchRequestJsonRequest = {}) => {
@@ -515,7 +568,7 @@ const handleBatchParameters = (args: GetBatchRequestJsonRequest = {}) => {
   return parametersArray;
 };
 
-export const getBatchResolver = (next) => (root, args, context, info) => {
+export const getBatchResolver = (next) => async (root, args, context, info) => {
   if (!args.input) {
     args.input = {};
   }
@@ -524,7 +577,11 @@ export const getBatchResolver = (next) => (root, args, context, info) => {
     parameters,
     datafile: batchDataFile,
   };
-  return next(root, args, context, info);
+  const data = (await next(root, args, context, info)) as GetBatchResponse;
+  if (data.repdata?.length && !data.repdata?.[0].id) {
+    return null;
+  }
+  return data;
 };
 
 const handleBankPageRecordsParameters = (args: GetBankPageRecordsRequestJsonRequest = {}) => {
@@ -593,7 +650,10 @@ export const getBankPageRecordsResolver = (next) => async (root, args, context, 
     parameters,
     datafile: bankPageRecordsDataFile,
   };
-  const data = await next(root, args, context, info);
+  const data = (await next(root, args, context, info)) as GetBankPageRecordsResponse;
+  if (data.repdata?.length && !data.repdata?.[0].id) {
+    return null;
+  }
   return data;
 };
 
@@ -658,11 +718,15 @@ const handleAccountsParameters = (args: GetAccountsRequestJsonRequest = {}) => {
   return parametersArray;
 };
 
-export const getAccountsResolver = (next) => (root, args, context, info) => {
+export const getAccountsResolver = (next) => async (root, args, context, info) => {
   const parameters = handleAccountsParameters(args.input);
   args.input = {
     parameters,
     datafile: accountsDataFile,
   };
-  return next(root, args, context, info);
+  const data = (await next(root, args, context, info)) as GetAccountsResponse;
+  if (data.repdata?.length && !data.repdata?.[0].id) {
+    return null;
+  }
+  return data;
 };
