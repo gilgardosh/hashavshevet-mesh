@@ -21,12 +21,6 @@
     },
     "initDateMax": {
       "type": "string"
-    },
-    "issueDateMin": {
-      "type": "string"
-    },
-    "issueDateMax": {
-      "type": "string"
     }
   }
 }

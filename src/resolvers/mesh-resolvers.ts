@@ -38,7 +38,7 @@ export const resolvers: Resolvers = {
           });
           return result?.repdata.length && result?.repdata[0];
         } catch (e) {
-          console.log(`Couldn't find batch id='${root.batchId}'`);
+          console.log(`Couldn't find batch id='${root.batchId}'\n`);
           return null;
         }
       },
@@ -533,7 +533,7 @@ const handleBatchParameters = (args: GetBatchRequestJsonRequest = {}) => {
       id: '2',
       type: 'date',
       name: 'initDate',
-      defVal: `"${args.initDateMin || '2000/01/01'}"`,
+      defVal: `"${args.initDateMin || '1990/01/01'}"`,
       opName: 'מ..עד',
       opOrigin: 'from',
     },
@@ -543,24 +543,6 @@ const handleBatchParameters = (args: GetBatchRequestJsonRequest = {}) => {
       type: 'date',
       name: 'initDate1',
       defVal: `"${args.initDateMax || '2030/01/01'}"`,
-      opName: 'מ..עד',
-      opOrigin: 'to',
-    },
-    {
-      p_name: '__MUSTACH_P6__',
-      id: '3',
-      type: 'date',
-      name: 'issueDate',
-      defVal: `"${args.issueDateMin || '2000/01/01'}"`,
-      opName: 'מ..עד',
-      opOrigin: 'from',
-    },
-    {
-      p_name: '__MUSTACH_P7__',
-      id: '503',
-      type: 'date',
-      name: 'issueDate1',
-      defVal: `"${args.issueDateMax || '2030/01/01'}"`,
       opName: 'מ..עד',
       opOrigin: 'to',
     },
