@@ -2,7 +2,8 @@
 
 
 # Errors and bugs
-- getBatches - form has errors on Hashavshevet's side. however it is designed - no more than one record is returned. If filters applied, only the first batch that match it is returned. Current the only way to make it partially work is to ask for one batch each request. An alternative is to create form based on transactions, and filter response for unique items.
+- getBatches - Can only fetch one at a time, due to errors on Hashavshevet's side. If filters applied (...and if not), only the first batch that matches it is returned. Note that creating a pdf report on UI does work for the exact same form. Current the only way to make it partially work is to ask for one batch each request. An alternative is to create form based on transactions, and filter response for unique items.
+- getAccounts - same issue exactly.
 - getBatches: adding issueDate filter makes temporary batches (with no issue date) impossible to fetch, since filters are mandatory and not optional.
 - getBatches: the first batch (id=1) which existed on Hashavshevet account (initDate = 01/01/1990) was impossible to retrieve via the form. might be filters issue.
 - ImportTransactionsToBatch: the imported attribute DebitCredit(/debitOrCreditNumber) is flipped on server side (requesting the record's data will result in opposite value). In addition, results have values of -1/1, but documentation mentions 0/1 as acceptable values (in practice, -1 is also acceptable and behaves as 0).
