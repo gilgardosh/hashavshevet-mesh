@@ -136,6 +136,9 @@ additionalTypeDefs: |
   extend type HashavshevetSchemaJsonBankPageRecord {
     account: HashavshevetSchemaJsonAccount
   }
+  extend type importTransactionsToBatchResponse {
+    batch: HashavshevetSchemaJsonBatch
+  }
 
 additionalResolvers:
   - ./src/resolvers/mesh-resolvers

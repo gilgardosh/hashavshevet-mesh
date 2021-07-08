@@ -233,6 +233,30 @@ export const resolvers: Resolvers = {
       },
     },
   },
+  importTransactionsToBatchResponse: {
+    batch: {
+      selectionSet: `{
+      batchno
+    }`,
+      resolve: async (root, _args, context) => {
+        if (!root.batchno) {
+          return null;
+        }
+        try {
+          const result = await context.Hashavshevet.api.getBatch({
+            input: {
+              idMin: root.batchno,
+              idMax: root.batchno,
+            },
+          });
+          return result?.repdata.length && result?.repdata[0];
+        } catch (e) {
+          console.log(`Couldn't find batch id='${root.batchno}'`);
+          return null;
+        }
+      },
+    },
+  },
 };
 
 const handleRecordsFilterParameters = (args: GetRecordsRequestJsonRequest = {}) => {

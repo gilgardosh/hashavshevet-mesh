@@ -126,11 +126,6 @@
           "format": "int32",
           "description": "Batch identifier (on cases added to existing batch)"
         },
-        "batchId": {
-          "type": "integer",
-          "format": "int32",
-          "description": "Batch identifier"
-        },
         "errors": {
           "anyOf": [
             {
