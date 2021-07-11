@@ -18,6 +18,7 @@ import {
   recordsDataFile,
   transactionsDataFile,
 } from './dataFiles';
+import { getAccountLoader, getBatchLoader, getTransactionLoader } from './dataLoaders';
 
 export const resolvers: Resolvers = {
   HashavshevetSchemaJsonRecord: {
@@ -30,13 +31,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getBatch({
-            input: {
-              idMin: root.batchId,
-              idMax: root.batchId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getBatchLoader(context).load(root.batchId);
         } catch (e) {
           console.log(`Couldn't find batch id='${root.batchId}'\n`);
           return null;
@@ -52,13 +47,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getTransactions({
-            input: {
-              idMin: root.transactionId,
-              idMax: root.transactionId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getTransactionLoader(context).load(root.transactionId);
         } catch (e) {
           console.log(`Couldn't find transaction id='${root.transactionId}'`);
           return null;
@@ -74,13 +63,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getAccounts({
-            input: {
-              idMin: root.accountId,
-              idMax: root.accountId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getAccountLoader(context).load(root.accountId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.accountId}'`);
           return null;
@@ -96,15 +79,9 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getAccounts({
-            input: {
-              idMin: root.counterAccountId,
-              idMax: root.counterAccountId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getAccountLoader(context).load(root.counterAccountId);
         } catch (e) {
-          console.log(`Couldn't find account id='${root.accountId}'`);
+          console.log(`Couldn't find account id='${root.counterAccountId}'`);
           return null;
         }
       },
@@ -120,13 +97,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getBatch({
-            input: {
-              idMin: root.batchId,
-              idMax: root.batchId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getBatchLoader(context).load(root.batchId);
         } catch (e) {
           console.log(`Couldn't find batch id='${root.batchId}'`);
           return null;
@@ -154,13 +125,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getAccounts({
-            input: {
-              idMin: root.creditorId,
-              idMax: root.creditorId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getAccountLoader(context).load(root.creditorId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.creditorId}'`);
           return null;
@@ -176,13 +141,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getAccounts({
-            input: {
-              idMin: root.debtorId,
-              idMax: root.debtorId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getAccountLoader(context).load(root.debtorId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.debtorId}'`);
           return null;
@@ -219,13 +178,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getAccounts({
-            input: {
-              idMin: root.accountId,
-              idMax: root.accountId,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getAccountLoader(context).load(root.accountId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.accountId}'`);
           return null;
@@ -243,13 +196,7 @@ export const resolvers: Resolvers = {
           return null;
         }
         try {
-          const result = await context.Hashavshevet.api.getBatch({
-            input: {
-              idMin: root.batchno,
-              idMax: root.batchno,
-            },
-          });
-          return result?.repdata.length && result?.repdata[0];
+          return await getBatchLoader(context).load(root.batchno);
         } catch (e) {
           console.log(`Couldn't find batch id='${root.batchno}'`);
           return null;
