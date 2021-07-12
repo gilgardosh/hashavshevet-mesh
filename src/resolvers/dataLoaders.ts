@@ -105,17 +105,20 @@ let accountByIdLoader: DataLoader<string, HashavshevetSchemaJsonAccount, string>
 export const getAccountByIdLoader = (context) => {
   if (!accountByIdLoader) {
     accountByIdLoader = new DataLoader(async (accountsIds: string[]) => {
-      const reqList = [...new Set(accountsIds)].map((id) => {
+      const promiseList = accountsIds.map((id) => {
         const promise: Promise<GetAccountsResponse> = context.Hashavshevet.api.getAccounts({
           input: { idMin: id, idMax: id },
         });
         return promise;
       });
-      const accontsList = await Promise.allSettled(reqList).then((res) =>
-        res.map((raw) => (raw.status === 'fulfilled' ? raw.value.repdata[0] : null)),
-      );
+      const accontsList = (await Promise.allSettled(promiseList))
+        .filter((a) => a.status === 'fulfilled' && a.value !== null)
+        .map((a: PromiseFulfilledResult<GetAccountsResponse>) => {
+          return a.value.repdata[0];
+        });
+
       return accountsIds.map((id) => {
-        return accontsList.find((account: HashavshevetSchemaJsonAccount) => account.id === id);
+        return accontsList.find((account: HashavshevetSchemaJsonAccount) => account.id === id) || null;
       });
     });
   }
