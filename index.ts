@@ -5,14 +5,18 @@ import fetch from 'node-fetch';
 import * as path from 'path';
 
 const init = async (
-  wizPersonalToken: string,
-  wizCompanyKey: string,
-  wizUrl: string,
+  hashavshevetPersonalToken: string,
+  hashavshevetCompanyKey: string,
+  hashavshevetUrl: string,
 ): Promise<{ sdk: Sdk; execute: ExecuteMeshFn }> => {
   console.log('initiating sdk...');
 
-  process.env.WIZ_URL = wizUrl;
-  process.env.WIZ_AUTH_TOKEN = (await login(wizPersonalToken, wizCompanyKey, wizUrl)) as string;
+  process.env.HASHAVSHEVET_MESH_URL = hashavshevetUrl;
+  process.env.HASHAVSHEVET_MESH_AUTH_TOKEN = (await login(
+    hashavshevetPersonalToken,
+    hashavshevetCompanyKey,
+    hashavshevetUrl,
+  )) as string;
 
   console.log('logged in to Hashavshevet');
 
@@ -30,13 +34,13 @@ const init = async (
   return { sdk, execute };
 };
 
-const login = (wizKey: string, company: string, wizUrl: string) => {
+const login = (hashavshevetKey: string, company: string, hashavshevetUrl: string) => {
   const p = new Promise((resolve, reject) => {
-    if (!wizKey || !company) {
+    if (!hashavshevetKey || !company) {
       reject(new Error('Missing Hashavshevet user key or company ID'));
       return;
     }
-    const url = `https://${wizUrl}/createSession/${wizKey}/${company}`;
+    const url = `https://${hashavshevetUrl}/createSession/${hashavshevetKey}/${company}`;
     fetch(url)
       .then((res) => res.text())
       .then((authToken) => {

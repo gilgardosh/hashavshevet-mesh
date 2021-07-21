@@ -2,11 +2,11 @@ sources:
   - name: Hashavshevet
     handler:
       jsonSchema:
-        baseUrl: 'https://${WIZ_URL}/'
+        baseUrl: 'https://${HASHAVSHEVET_MESH_URL}/'
         baseSchema: ./json-schemas/hashavshevetSchema.json
         operationHeaders:
-          Authorization: 'Bearer ${WIZ_AUTH_TOKEN}'
-          host: '${WIZ_URL}'
+          Authorization: 'Bearer ${HASHAVSHEVET_MESH_AUTH_TOKEN}'
+          host: '${HASHAVSHEVET_MESH_URL}'
           Content-Type: application/x-www-form-urlencoded
           Accept: application/json
         operations:
