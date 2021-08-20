@@ -1,7 +1,0 @@
-query test {
-  getCompanies {
-    repdata {
-      Company_Name
-    }
-  }
-}
