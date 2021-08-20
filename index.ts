@@ -1,14 +1,11 @@
-import { getSdk, Sdk } from './src/generated/sdk';
-import { findAndParseConfig } from '@graphql-mesh/config';
-import { ExecuteMeshFn, getMesh } from '@graphql-mesh/runtime';
+import { getMeshSDK, Sdk } from './.mesh';
 import fetch from 'node-fetch';
-import * as path from 'path';
 
 const init = async (
   hashavshevetPersonalToken: string,
   hashavshevetCompanyKey: string,
   hashavshevetUrl: string,
-): Promise<{ sdk: Sdk; execute: ExecuteMeshFn }> => {
+): Promise<{ sdk: Sdk }> => {
   console.log('initiating sdk...');
 
   process.env.HASHAVSHEVET_MESH_URL = hashavshevetUrl;
@@ -20,18 +17,9 @@ const init = async (
 
   console.log('logged in to Hashavshevet');
 
-  const localPath = path.join(__dirname);
+  const sdk = await getMeshSDK();
 
-  const meshConfig = await findAndParseConfig({
-    dir: localPath,
-  });
-
-  const { sdkRequester, execute } = await getMesh(meshConfig);
-  const sdk = await getSdk(sdkRequester);
-
-  console.log('Mesh ready');
-
-  return { sdk, execute };
+  return { sdk };
 };
 
 const login = (hashavshevetKey: string, company: string, hashavshevetUrl: string) => {
@@ -54,5 +42,5 @@ const login = (hashavshevetKey: string, company: string, hashavshevetUrl: string
   return p;
 };
 
-export * from './src/generated/sdk';
+export * from './.mesh';
 export { init };
