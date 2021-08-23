@@ -1,89 +1,76 @@
 import DataLoader from 'dataloader';
+import { GraphQLResolveInfo } from 'graphql';
 import {
-  GetAccountsResponse,
-  GetBatchResponse,
-  GetRecordsResponse,
-  GetTransactionsResponse,
-  HashavshevetSchemaJsonAccount,
-  HashavshevetSchemaJsonBatch,
-  HashavshevetSchemaJsonRecord,
-  HashavshevetSchemaJsonTransaction,
-} from '../generated/mesh';
+  getAccountsResponse,
+  getBatchResponse,
+  getTransactionsResponse,
+  Account,
+  Batch,
+  Transaction,
+  MeshContext,
+} from '../../.mesh';
 
-let recordsByTransactionIdLoader: DataLoader<number, HashavshevetSchemaJsonRecord[], number>;
+let transactionByIdLoader: DataLoader<number, Transaction, number>;
 
-export const getRecordsByTransactionIdLoader = (context) => {
-  if (!recordsByTransactionIdLoader) {
-    recordsByTransactionIdLoader = new DataLoader(async (batchIds: number[]) => {
-      const recordsList: GetRecordsResponse = await context.Hashavshevet.api.getRecords({
-        input: {
-          transactionIdMin: Math.min.apply(null, batchIds),
-          transactionIdMax: Math.max.apply(null, batchIds),
-        },
-      });
-      return batchIds.map((transactionId) => {
-        return recordsList.repdata?.filter(
-          (record: HashavshevetSchemaJsonRecord) => record.transactionId === transactionId,
-        );
-      });
-    });
-  }
-  return recordsByTransactionIdLoader;
-};
-
-let transactionByIdLoader: DataLoader<number, HashavshevetSchemaJsonTransaction, number>;
-
-export const getTransactionByIdLoader = (context) => {
+export const getTransactionByIdLoader = (context: MeshContext, info: GraphQLResolveInfo) => {
   if (!transactionByIdLoader) {
     transactionByIdLoader = new DataLoader(async (transactionsIds: number[]) => {
-      const transactionsList: GetTransactionsResponse = await context.Hashavshevet.api.getTransactions({
-        input: {
-          idMin: Math.min.apply(null, transactionsIds),
-          idMax: Math.max.apply(null, transactionsIds),
+      const transactionsList: getTransactionsResponse = await context.Hashavshevet.Query.getTransactions({
+        args: {
+          input: {
+            idMin: Math.min.apply(null, transactionsIds),
+            idMax: Math.max.apply(null, transactionsIds),
+          },
         },
+        context,
+        info,
       });
       return transactionsIds.map((id) => {
-        return transactionsList.repdata?.find(
-          (transaction: HashavshevetSchemaJsonTransaction) => transaction.id === id,
-        );
+        return transactionsList.repdata?.find((transaction: Transaction) => transaction.id === id);
       });
     });
   }
   return transactionByIdLoader;
 };
 
-let transactionsByBatchIdLoader: DataLoader<number, HashavshevetSchemaJsonTransaction[], number>;
+let transactionsByBatchIdLoader: DataLoader<number, Transaction[], number>;
 
-export const getTransactionsByBatchIdLoader = (context) => {
+export const getTransactionsByBatchIdLoader = (context: MeshContext, info: GraphQLResolveInfo) => {
   if (!transactionsByBatchIdLoader) {
     transactionsByBatchIdLoader = new DataLoader(async (batchIds: number[]) => {
-      const transactionsList: GetTransactionsResponse = await context.Hashavshevet.api.getTransactions({
-        input: {
-          batchIdMin: Math.min.apply(null, batchIds),
-          batchIdMax: Math.max.apply(null, batchIds),
+      const transactionsList: getTransactionsResponse = await context.Hashavshevet.Query.getTransactions({
+        args: {
+          input: {
+            batchIdMin: Math.min.apply(null, batchIds),
+            batchIdMax: Math.max.apply(null, batchIds),
+          },
         },
+        context,
+        info,
       });
       return batchIds.map((batchId) => {
-        return transactionsList.repdata?.filter(
-          (transaction: HashavshevetSchemaJsonTransaction) => transaction.batchId === batchId,
-        );
+        return transactionsList.repdata?.filter((transaction: Transaction) => transaction.batchId === batchId);
       });
     });
   }
   return transactionsByBatchIdLoader;
 };
 
-let batchByIdLoader: DataLoader<number, HashavshevetSchemaJsonBatch, number>;
+let batchByIdLoader: DataLoader<number, Batch, number>;
 
-export const getBatchByIdLoader = (context) => {
+export const getBatchByIdLoader = (context: MeshContext, info: GraphQLResolveInfo) => {
   if (!batchByIdLoader) {
     batchByIdLoader = new DataLoader(async (batchsIds: number[]) => {
       const reqList = [...new Set(batchsIds)].map((id) => {
-        const promise: Promise<GetBatchResponse> = context.Hashavshevet.api.getBatch({
-          input: {
-            batchIdMin: id,
-            batchIdMax: id,
+        const promise: Promise<getBatchResponse> = context.Hashavshevet.Query.getBatch({
+          args: {
+            input: {
+              idMin: id,
+              idMax: id,
+            },
           },
+          context,
+          info,
         });
         return promise;
       });
@@ -93,32 +80,36 @@ export const getBatchByIdLoader = (context) => {
       );
 
       return batchsIds.map((id) => {
-        return batchsList.find((batch: HashavshevetSchemaJsonBatch) => batch.id === id);
+        return batchsList.find((batch: Batch) => batch.id === id);
       });
     });
   }
   return batchByIdLoader;
 };
 
-let accountByIdLoader: DataLoader<string, HashavshevetSchemaJsonAccount, string>;
+let accountByIdLoader: DataLoader<string, Account, string>;
 
-export const getAccountByIdLoader = (context) => {
+export const getAccountByIdLoader = (context: MeshContext, info: GraphQLResolveInfo) => {
   if (!accountByIdLoader) {
     accountByIdLoader = new DataLoader(async (accountsIds: string[]) => {
       const promiseList = accountsIds.map((id) => {
-        const promise: Promise<GetAccountsResponse> = context.Hashavshevet.api.getAccounts({
-          input: { idMin: id, idMax: id },
+        const promise: Promise<getAccountsResponse> = context.Hashavshevet.Query.getAccounts({
+          args: {
+            input: { idMin: id, idMax: id },
+          },
+          context,
+          info,
         });
         return promise;
       });
       const accontsList = (await Promise.allSettled(promiseList))
         .filter((a) => a.status === 'fulfilled' && a.value !== null)
-        .map((a: PromiseFulfilledResult<GetAccountsResponse>) => {
+        .map((a: PromiseFulfilledResult<getAccountsResponse>) => {
           return a.value.repdata[0];
         });
 
       return accountsIds.map((id) => {
-        return accontsList.find((account: HashavshevetSchemaJsonAccount) => account.id === id) || null;
+        return accontsList.find((account: Account) => account.id === id) || null;
       });
     });
   }

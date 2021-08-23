@@ -1,16 +1,18 @@
+/* eslint-disable camelcase */
 import {
-  GetAccountsRequestJsonRequest,
-  GetAccountsResponse,
-  GetBankPageRecordsRequestJsonRequest,
-  GetBankPageRecordsResponse,
-  GetBatchRequestJsonRequest,
-  GetBatchResponse,
-  GetRecordsRequestJsonRequest,
-  GetRecordsResponse,
-  GetTransactionsRequestJsonRequest,
-  GetTransactionsResponse,
+  _queryInput_getAccounts_Input,
+  getAccountsResponse,
+  _queryInput_getBankPageRecords_Input,
+  getBankPageRecordsResponse,
+  _queryInput_getBatch_Input,
+  getBatchResponse,
+  _queryInput_getRecords_Input,
+  getRecordsResponse,
+  _queryInput_getTransactions_Input,
+  getTransactionsResponse,
   Resolvers,
-} from '../generated/mesh';
+  RecordType,
+} from '../../.mesh';
 import {
   accountsDataFile,
   bankPageRecordsDataFile,
@@ -21,23 +23,22 @@ import {
 import {
   getAccountByIdLoader,
   getBatchByIdLoader,
-  getRecordsByTransactionIdLoader,
   getTransactionByIdLoader,
   getTransactionsByBatchIdLoader,
 } from './dataLoaders';
 
 export const resolvers: Resolvers = {
-  HashavshevetSchemaJsonRecord: {
+  RecordType: {
     batch: {
       selectionSet: `{
       batchId
     }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.batchId) {
           return null;
         }
         try {
-          return await getBatchByIdLoader(context).load(root.batchId);
+          return await getBatchByIdLoader(context, info).load(root.batchId);
         } catch (e) {
           console.log(`Couldn't find batch id='${root.batchId}'\n`);
           return null;
@@ -48,12 +49,12 @@ export const resolvers: Resolvers = {
       selectionSet: `{
         transactionId
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.transactionId) {
           return null;
         }
         try {
-          return await getTransactionByIdLoader(context).load(root.transactionId);
+          return await getTransactionByIdLoader(context, info).load(root.transactionId);
         } catch (e) {
           console.log(`Couldn't find transaction id='${root.transactionId}'`);
           return null;
@@ -64,12 +65,12 @@ export const resolvers: Resolvers = {
       selectionSet: `{
         accountId
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.accountId) {
           return null;
         }
         try {
-          return await getAccountByIdLoader(context).load(root.accountId);
+          return await getAccountByIdLoader(context, info).load(root.accountId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.accountId}'`);
           return null;
@@ -80,12 +81,12 @@ export const resolvers: Resolvers = {
       selectionSet: `{
         counterAccountId
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.counterAccountId) {
           return null;
         }
         try {
-          return await getAccountByIdLoader(context).load(root.counterAccountId);
+          return await getAccountByIdLoader(context, info).load(root.counterAccountId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.counterAccountId}'`);
           return null;
@@ -93,17 +94,17 @@ export const resolvers: Resolvers = {
       },
     },
   },
-  HashavshevetSchemaJsonTransaction: {
+  Transaction: {
     batch: {
       selectionSet: `{
       batchId
     }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.batchId) {
           return null;
         }
         try {
-          return await getBatchByIdLoader(context).load(root.batchId);
+          return await getBatchByIdLoader(context, info).load(root.batchId);
         } catch (e) {
           console.log(`Couldn't find batch id='${root.batchId}'`);
           return null;
@@ -114,23 +115,38 @@ export const resolvers: Resolvers = {
       selectionSet: `{
         id
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.id) {
           return [];
         }
-        return await getRecordsByTransactionIdLoader(context).load(root.id);
+        return context.Hashavshevet.Query.getRecords({
+          root,
+          context,
+          info,
+          key: root.id,
+          argsFromKeys: (batchIds: number[]) => ({
+            input: {
+              transactionIdMin: Math.min.apply(null, batchIds),
+              transactionIdMax: Math.max.apply(null, batchIds),
+            },
+          }),
+          valuesFromResults: (recordsList: getRecordsResponse, batchIds: number[]) =>
+            batchIds.map((transactionId) => {
+              return recordsList.repdata?.filter((record: RecordType) => record.transactionId === transactionId);
+            }),
+        });
       },
     },
     creditor: {
       selectionSet: `{
         creditorId
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.creditorId) {
           return null;
         }
         try {
-          return await getAccountByIdLoader(context).load(root.creditorId);
+          return await getAccountByIdLoader(context, info).load(root.creditorId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.creditorId}'`);
           return null;
@@ -141,12 +157,12 @@ export const resolvers: Resolvers = {
       selectionSet: `{
         debtorId
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.debtorId) {
           return null;
         }
         try {
-          return await getAccountByIdLoader(context).load(root.debtorId);
+          return await getAccountByIdLoader(context, info).load(root.debtorId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.debtorId}'`);
           return null;
@@ -154,30 +170,30 @@ export const resolvers: Resolvers = {
       },
     },
   },
-  HashavshevetSchemaJsonBatch: {
+  Batch: {
     transactions: {
       selectionSet: `{
         batchId
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.id) {
           return [];
         }
-        return await getTransactionsByBatchIdLoader(context).load(root.id);
+        return await getTransactionsByBatchIdLoader(context, info).load(root.id);
       },
     },
   },
-  HashavshevetSchemaJsonBankPageRecord: {
+  BankPageRecord: {
     account: {
       selectionSet: `{
         accountId
       }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.accountId) {
           return null;
         }
         try {
-          return await getAccountByIdLoader(context).load(root.accountId);
+          return await getAccountByIdLoader(context, info).load(root.accountId);
         } catch (e) {
           console.log(`Couldn't find account id='${root.accountId}'`);
           return null;
@@ -190,12 +206,12 @@ export const resolvers: Resolvers = {
       selectionSet: `{
       batchno
     }`,
-      resolve: async (root, _args, context) => {
+      resolve: async (root, _args, context, info) => {
         if (!root.batchno) {
           return null;
         }
         try {
-          return await getBatchByIdLoader(context).load(root.batchno);
+          return await getBatchByIdLoader(context, info).load(root.batchno);
         } catch (e) {
           console.log(`Couldn't find batch id='${root.batchno}'`);
           return null;
@@ -205,7 +221,7 @@ export const resolvers: Resolvers = {
   },
 };
 
-const handleRecordsFilterParameters = (args: GetRecordsRequestJsonRequest = {}) => {
+const handleRecordsFilterParameters = (args: _queryInput_getRecords_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',
@@ -307,14 +323,14 @@ export const getRecordsResolver = (next) => async (root, args, context, info) =>
     parameters,
     datafile: recordsDataFile,
   };
-  const data = (await next(root, args, context, info)) as GetRecordsResponse;
+  const data = (await next(root, args, context, info)) as getRecordsResponse;
   if (data.repdata?.length && !data.repdata?.[0].id) {
     return null;
   }
   return data;
 };
 
-const handleTransactionsFilterParameters = (args: GetTransactionsRequestJsonRequest = {}) => {
+const handleTransactionsFilterParameters = (args: _queryInput_getTransactions_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',
@@ -453,14 +469,14 @@ export const getTransactionsResolver = (next) => async (root, args, context, inf
     parameters,
     datafile: transactionsDataFile,
   };
-  const data = (await next(root, args, context, info)) as GetTransactionsResponse;
+  const data = (await next(root, args, context, info)) as getTransactionsResponse;
   if (data.repdata?.length && !data.repdata?.[0].id) {
     return null;
   }
   return data;
 };
 
-const handleBatchParameters = (args: GetBatchRequestJsonRequest = {}) => {
+const handleBatchParameters = (args: _queryInput_getBatch_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',
@@ -529,14 +545,14 @@ export const getBatchResolver = (next) => async (root, args, context, info) => {
     parameters,
     datafile: batchDataFile,
   };
-  const data = (await next(root, args, context, info)) as GetBatchResponse;
+  const data = (await next(root, args, context, info)) as getBatchResponse;
   if (data.repdata?.length && !data.repdata?.[0].id) {
     return null;
   }
   return data;
 };
 
-const handleBankPageRecordsParameters = (args: GetBankPageRecordsRequestJsonRequest = {}) => {
+const handleBankPageRecordsParameters = (args: _queryInput_getBankPageRecords_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',
@@ -602,14 +618,14 @@ export const getBankPageRecordsResolver = (next) => async (root, args, context, 
     parameters,
     datafile: bankPageRecordsDataFile,
   };
-  const data = (await next(root, args, context, info)) as GetBankPageRecordsResponse;
+  const data = (await next(root, args, context, info)) as getBankPageRecordsResponse;
   if (data.repdata?.length && !data.repdata?.[0].id) {
     return null;
   }
   return data;
 };
 
-const handleAccountsParameters = (args: GetAccountsRequestJsonRequest = {}) => {
+const handleAccountsParameters = (args: _queryInput_getAccounts_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',
@@ -676,7 +692,7 @@ export const getAccountsResolver = (next) => async (root, args, context, info) =
     parameters,
     datafile: accountsDataFile,
   };
-  const data = (await next(root, args, context, info)) as GetAccountsResponse;
+  const data = (await next(root, args, context, info)) as getAccountsResponse;
   if (data.repdata?.length && !data.repdata?.[0].id) {
     return null;
   }
