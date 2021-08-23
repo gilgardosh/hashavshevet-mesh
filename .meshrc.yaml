@@ -121,26 +121,26 @@ require:
   - ts-node/register/transpile-only
 
 additionalTypeDefs: |
-  extend type HashavshevetSchemaJsonTransaction {
-    batch: HashavshevetSchemaJsonBatch
-    records: [HashavshevetSchemaJsonRecord]
-    creditor: HashavshevetSchemaJsonAccount
-    debtor: HashavshevetSchemaJsonAccount
+  extend type Transaction {
+    batch: Batch
+    records: [RecordType]
+    creditor: Account
+    debtor: Account
   }
-  extend type HashavshevetSchemaJsonBatch {
-    transactions: [HashavshevetSchemaJsonTransaction]
+  extend type Batch {
+    transactions: [Transaction]
   }
-  extend type HashavshevetSchemaJsonRecord {
-    transaction: HashavshevetSchemaJsonTransaction
-    batch: HashavshevetSchemaJsonBatch
-    account: HashavshevetSchemaJsonAccount
-    counterAccount: HashavshevetSchemaJsonAccount
+  extend type RecordType {
+    transaction: Transaction
+    batch: Batch
+    account: Account
+    counterAccount: Account
   }
-  extend type HashavshevetSchemaJsonBankPageRecord {
-    account: HashavshevetSchemaJsonAccount
+  extend type BankPageRecord {
+    account: Account
   }
   extend type importTransactionsToBatchResponse {
-    batch: HashavshevetSchemaJsonBatch
+    batch: Batch
   }
 
 additionalResolvers:
