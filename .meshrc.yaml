@@ -3,7 +3,6 @@ sources:
     handler:
       jsonSchema:
         baseUrl: 'https://{env.HASHAVSHEVET_MESH_URL}/'
-        # baseSchema: ./json-schemas/hashavshevetSchema.json
         operationHeaders:
           Authorization: 'Bearer {env.HASHAVSHEVET_MESH_AUTH_TOKEN}'
           host: '{env.HASHAVSHEVET_MESH_URL}'
@@ -101,15 +100,15 @@ sources:
           mode: bare
           compositions:
             - resolver: Query.getRecords
-              composer: ./src/resolvers/mesh-resolvers#getRecordsResolver
+              composer: ./src/resolvers/getRecordsResolver
             - resolver: Query.getTransactions
-              composer: ./src/resolvers/mesh-resolvers#getTransactionsResolver
+              composer: ./src/resolvers/getTransactionsResolver
             - resolver: Query.getBatch
-              composer: ./src/resolvers/mesh-resolvers#getBatchResolver
+              composer: ./src/resolvers/getBatchResolver
             - resolver: Query.getAccounts
-              composer: ./src/resolvers/mesh-resolvers#getAccountsResolver
+              composer: ./src/resolvers/getAccountsResolver
             - resolver: Query.getBankPageRecords
-              composer: ./src/resolvers/mesh-resolvers#getBankPageRecordsResolver
+              composer: ./src/resolvers/getBankPageRecordsResolver
 serve:
   browser: false
 

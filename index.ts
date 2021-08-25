@@ -1,11 +1,13 @@
-import { getMeshSDK, Sdk } from './.mesh';
+import { getBuiltMesh, getMeshSDK, Sdk } from './.mesh';
 import fetch from 'node-fetch';
+
+type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
 
 const init = async (
   hashavshevetPersonalToken: string,
   hashavshevetCompanyKey: string,
   hashavshevetUrl: string,
-): Promise<{ sdk: Sdk }> => {
+): Promise<{ sdk: Sdk; execute: Awaited<ReturnType<typeof getBuiltMesh>>['execute'] }> => {
   console.log('initiating sdk...');
 
   process.env.HASHAVSHEVET_MESH_URL = hashavshevetUrl;
@@ -17,9 +19,10 @@ const init = async (
 
   console.log('logged in to Hashavshevet');
 
+  const { execute } = await getBuiltMesh();
   const sdk = await getMeshSDK();
 
-  return { sdk };
+  return { sdk, execute };
 };
 
 const login = (hashavshevetKey: string, company: string, hashavshevetUrl: string) => {
