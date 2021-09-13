@@ -38,6 +38,15 @@ const resolvers: Resolvers = {
           context,
           info,
           key: root.transactionId,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'transaction')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           argsFromKeys: (transactionIds: number[]) => ({
             input: {
               idMin: Math.min.apply(null, transactionIds),
@@ -132,6 +141,15 @@ const resolvers: Resolvers = {
           context,
           info,
           key: root.id,
+          selectionSet: `{
+            repdata {
+              transactionId
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'records')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           argsFromKeys: (batchIds: number[]) => ({
             input: {
               transactionIdMin: Math.min.apply(null, batchIds),
@@ -204,6 +222,15 @@ const resolvers: Resolvers = {
           context,
           info,
           key: root.id,
+          selectionSet: `{
+            repdata {
+              batchId
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'transactions')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           argsFromKeys: (batchIds: number[]) => ({
             input: {
               batchIdMin: Math.min.apply(null, batchIds),
