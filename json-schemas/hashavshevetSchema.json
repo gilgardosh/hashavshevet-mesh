@@ -12,7 +12,7 @@
         "session": {
           "type": "object",
           "additionalProperties": false,
-          "required": [""],
+          "required": [],
           "properties": {
             "branch": {
               "type": "integer"
@@ -80,7 +80,7 @@
           "type": ["array", "null"],
           "additionalItems": false,
           "items": {
-            "$ref": "#/components/Record"
+            "$ref": "#/definitions/RecordType"
           }
         }
       }
@@ -95,7 +95,7 @@
           "type": ["array", "null"],
           "additionalItems": false,
           "items": {
-            "$ref": "#/components/Transaction"
+            "$ref": "#/definitions/Transaction"
           }
         }
       }
@@ -114,7 +114,7 @@
           "description": "Batch Issue Status"
         },
         "batch_check": {
-          "$ref": "#/components/BatchCheckResponse"
+          "$ref": "#/definitions/BatchCheckResponse"
         },
         "newbatch": {
           "type": "integer",
@@ -127,7 +127,7 @@
           "description": "Batch identifier (on cases added to existing batch)"
         },
         "errors": {
-          "anyOf": [
+          "oneOf": [
             {
               "type": "array",
               "additionalItems": false,
@@ -184,7 +184,7 @@
       "additionalProperties": false,
       "properties": {
         "batch_check": {
-          "$ref": "#/components/BatchCheckResponse"
+          "$ref": "#/definitions/BatchCheckResponse"
         }
       }
     },
@@ -197,7 +197,7 @@
           "type": ["array", "null"],
           "additionalItems": false,
           "items": {
-            "$ref": "#/components/Batch"
+            "$ref": "#/definitions/Batch"
           }
         }
       }
@@ -207,7 +207,7 @@
       "additionalProperties": false,
       "properties": {
         "batch_check": {
-          "$ref": "#/components/BatchCheckResponse"
+          "$ref": "#/definitions/BatchCheckResponse"
         },
         "batch_issue": {
           "type": "string",
@@ -225,7 +225,7 @@
           "type": ["array", "null"],
           "additionalItems": false,
           "items": {
-            "$ref": "#/components/BankPageRecord"
+            "$ref": "#/definitions/BankPageRecord"
           }
         }
       }
@@ -275,13 +275,11 @@
           "type": ["array", "null"],
           "additionalItems": false,
           "items": {
-            "$ref": "#/components/Account"
+            "$ref": "#/definitions/Account"
           }
         }
       }
-    }
-  },
-  "components": {
+    },
     "Transaction": {
       "type": "object",
       "additionalProperties": false,
@@ -472,7 +470,7 @@
         }
       }
     },
-    "Record": {
+    "RecordType": {
       "type": "object",
       "additionalProperties": false,
       "description": "A Single Record",
@@ -612,7 +610,7 @@
       }
     },
     "BatchCheckResponse": {
-      "anyOf": [
+      "oneOf": [
         { "type": "string", "description": "Batch check status" },
         {
           "type": "array",
