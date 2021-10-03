@@ -18,3 +18,5 @@
 # TODOs
 - rename fields according to our convention
 - complete missing calls commented on .meshrc.ymal
+- after mesh fix, add "type": "module" to package,json and update node-fetch to LTS
+- find fix for "errors" attribute conflict  between Mesh and hashavshevet
