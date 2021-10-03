@@ -280,6 +280,60 @@
         }
       }
     },
+    "importAccountsRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["insertnew", "rows"],
+      "properties": {
+        "insertnew": {
+          "type": "boolean",
+          "description": "Allow inserting new records. If false only update is allowed"
+        },
+        "rows": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "$ref": "#/definitions/AccountImport"
+          }
+        }
+      }
+    },
+    "importAccountsResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "errors"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["errors", "OK"]
+        },
+        "errors": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["index"],
+            "properties": {
+              "index": {
+                "type": "integer",
+                "format": "int32",
+                "description": "Index"
+              },
+              "field": {
+                "type": "string",
+                "description": "Field name where error occurred"
+              },
+              "err": {
+                "type": "string",
+                "description": "Error description"
+              }
+            }
+          }
+        }
+      }
+    },
+
     "Transaction": {
       "type": "object",
       "additionalProperties": false,
@@ -867,6 +921,194 @@
         "zipcode": {
           "type": "string",
           "description": "Zip code (max 10 characters)"
+        }
+      }
+    },
+    "AccountImport": {
+      "description": "A Single Account for Import",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["AccountKey"],
+      "properties": {
+        "AccountKey": {
+          "type": "string",
+          "description": "[id] Account identifier (max 15 characters)"
+        },
+        "Address": {
+          "type": "string",
+          "description": "[address] Address (max 50 characters)"
+        },
+        "Agent": {
+          "type": "integer",
+          "format": "int32",
+          "description": "[agent] Salesperson"
+        },
+        "AssignKey": {
+          "type": "string",
+          "description": "[centralAccount], Central account key (existing account) (max 15 characters)"
+        },
+        "AverageSupplyPeriod": {
+          "type": "number",
+          "format": "float",
+          "description": "Average supply time"
+        },
+        "AvgLatePay": {
+          "type": "number",
+          "format": "integer",
+          "description": "Average delay of payments"
+        },
+        "BalanceCode": {
+          "type": "string",
+          "description": "[balanceCode] Code for the balance and profit and loss report"
+        },
+        "BankAccount": {
+          "type": "string",
+          "description": "[bankAccountId] Bank account # (max 20 characters)"
+        },
+        "BankCode": {
+          "type": "string",
+          "description": "[bankId] Bank code (max 3 characters)"
+        },
+        "BranchCode": {
+          "type": "string",
+          "description": "[bankBranchId] Bank branch code (max 5 characters)"
+        },
+        "City": {
+          "type": "string",
+          "description": "[city] City (max 20 characters)"
+        },
+        "CostCode": {
+          "type": "string",
+          "description": "[costingCode] Code of cost center (existing code)"
+        },
+        "Country": {
+          "type": "string",
+          "description": "[country] Country (max 20 characters)"
+        },
+        "CreditTermsCode": {
+          "type": "number",
+          "format": "integer",
+          "description": "Split payment code"
+        },
+        "CustomerNote": {
+          "type": "string",
+          "description": "Message for the customer (max 250 characters)"
+        },
+        "DeductFile": {
+          "type": "string",
+          "description": "[incomeFileNumber] Income file number (max 20 characters)"
+        },
+        "DeductionPrc": {
+          "type": "number",
+          "format": "float",
+          "description": "[withholdingPercent] % withholding tax"
+        },
+        "DeductionValid": {
+          "type": "string",
+          "description": "[withholdingValidity] Validity date of the % withholding tax"
+        },
+        "Details": {
+          "type": "string",
+          "description": "[details] Remarks (max 50 characters)"
+        },
+        "DifferAcc": {
+          "type": "string",
+          "description": "Account key for small differences (existing account) (max 15 characters)"
+        },
+        "DiscountCode": {
+          "type": "number",
+          "format": "integer",
+          "description": "Discount code"
+        },
+        "DocCurr": {
+          "type": "string",
+          "description": "Default value for foreign currency (max 5 characters)"
+        },
+        "Email": {
+          "type": "string",
+          "description": "[email] Email"
+        },
+        "Fax": {
+          "type": "string",
+          "description": "[fax] Fax (max 30 characters)"
+        },
+        "Filter": {
+          "type": "string",
+          "description": "[filter] Filtering (5 characters)"
+        },
+        "FixedOrderCost": {
+          "type": "number",
+          "format": "float",
+          "description": "Fix cost of order"
+        },
+        "FullName": {
+          "type": "string",
+          "description": "[name] Account name (max 50 characters)"
+        },
+        "MainAccount": {
+          "type": "string",
+          "description": "[mainAccount] Code of the main account"
+        },
+        "Masav": {
+          "type": "number",
+          "enum": [0, 1],
+          "description": "Transfer to MASAV. 0/1"
+        },
+        "MatchCurr": {
+          "type": "string",
+          "description": "Currency for reconciliation (when the price is in foreign currency) (max 5 characters)"
+        },
+        "MaxCredit": {
+          "type": "number",
+          "format": "float",
+          "description": "[maxCredit] Credit limit"
+        },
+        "MaxCreditCurrency": {
+          "type": "string",
+          "description": "[maxCreditCurrency] Credit currency (max 5 characters)"
+        },
+        "MaxObligo": {
+          "type": "number",
+          "format": "float",
+          "description": "[maxObligo] Credit risk limit"
+        },
+        "MaxObligoCurrency": {
+          "type": "string",
+          "description": "[maxObligoCurrency] Credit risk currency (max 5 characters)"
+        },
+        "Phone": {
+          "type": "string",
+          "description": "[phone] Phone (max 30 characters)"
+        },
+        "SortGroup": {
+          "type": "integer",
+          "format": "int32",
+          "description": "[sortGroup] Sorting code"
+        },
+        "TaxFileNum": {
+          "type": "string",
+          "description": "[authorizedDealerNumber] VAT registration number (max [20 or 9?] characters)"
+        },
+        "TFtalDiscount": {
+          "type": "number",
+          "format": "float",
+          "description": "[generalDiscountPercent] % customer discount"
+        },
+        "VatExampt": {
+          "type": "string",
+          "description": "[vatExempt] VAT exempt, 1/0"
+        },
+        "WebSite": {
+          "type": "string",
+          "description": "Web site (max 250 characters)"
+        },
+        "WorF": {
+          "type": "string",
+          "description": "[occupation] Occupation (max 15 characters)"
+        },
+        "Zip": {
+          "type": "string",
+          "description": "[zipcode] Zip code (max 10 characters)"
         }
       }
     }

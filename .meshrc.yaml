@@ -70,9 +70,16 @@ sources:
             method: POST
             requestSchema: ./json-schemas/getAccountsRequest.json
             responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getAccountsResponse
-          # importAccounts (importIndexRecords)
+          - type: Mutation
+            field: importAccounts
+            path: /IndexApi/importIndex
+            method: POST
+            requestSchema: ./json-schemas/hashavshevetSchema.json#/definitions/importAccountsRequest
+            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/importAccountsResponse
+          # deleteAccounts (deleteIndexRecords)
+
           # importItems (importIndexRecords)
-          # deleteIndexRecords
+          # deleteItems (deleteIndexRecords)
 
           - type: Query
             field: getBankPageRecords
@@ -109,6 +116,8 @@ sources:
               composer: ./src/resolvers/getAccountsResolver
             - resolver: Query.getBankPageRecords
               composer: ./src/resolvers/getBankPageRecordsResolver
+            - resolver: Mutation.importAccounts
+              composer: ./src/resolvers/importAccountsResolver
 serve:
   browser: false
 
