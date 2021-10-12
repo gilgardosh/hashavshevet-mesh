@@ -125,7 +125,7 @@
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["accountId", "debitOrCreditNumber", "shekelSum"],
+              "required": ["AccountKey", "DebitCredit", "Suf"],
               "properties": {
                 "AccountKey": {
                   "type": "string",
@@ -133,7 +133,6 @@
                 },
                 "DebitCredit": {
                   "type": "integer",
-                  "enum": [0, 1],
                   "description": "Debit=1, Credit=0"
                 },
                 "SufDlr": {

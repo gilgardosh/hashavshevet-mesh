@@ -12,16 +12,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getBatch({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'batch')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.batchId,
               idMax: root.batchId,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
@@ -69,16 +79,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getAccounts({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'account')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.accountId,
               idMax: root.accountId,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
@@ -91,16 +111,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getAccounts({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'counterAccount')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.counterAccountId,
               idMax: root.counterAccountId,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
@@ -115,16 +145,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getBatch({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'batch')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.batchId,
               idMax: root.batchId,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
@@ -172,16 +212,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getAccounts({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'creditor')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.creditorId,
               idMax: root.creditorId,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
@@ -194,16 +244,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getAccounts({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'debtor')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.debtorId,
               idMax: root.debtorId,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
@@ -255,16 +315,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getAccounts({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'account')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.accountId,
               idMax: root.accountId,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
@@ -279,16 +349,26 @@ const resolvers: Resolvers = {
           return null;
         }
         return context.Hashavshevet.Query.getBatch({
+          root,
+          context,
+          info,
+          selectionSet: `{
+            repdata {
+              id
+              ${info.fieldNodes
+                .find((n) => n.name.value === 'batch')
+                .selectionSet.selections.map((s: any) => s.name?.value || '')
+                .join('\n')}
+            }
+          }`,
           args: {
             input: {
               idMin: root.batchno,
               idMax: root.batchno,
             },
           },
-          context,
-          info,
         }).then((res) => {
-          return res.repdata && res.repdata.length > 1 ? res.repdata[0] : null;
+          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
         });
       },
     },
