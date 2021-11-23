@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { getBankPageRecordsResponse, _queryInput_getBankPageRecords_Input } from '../../.mesh';
+import { getBankPageRecordsResponse, queryInput_getBankPageRecords_Input } from '../../.mesh';
 import { bankPageRecordsDataFile } from './dataFiles';
 
-const handleBankPageRecordsParameters = (args: _queryInput_getBankPageRecords_Input = {}) => {
+const handleBankPageRecordsParameters = (args: queryInput_getBankPageRecords_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',

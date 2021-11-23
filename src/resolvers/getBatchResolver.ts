@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { getBatchResponse, _queryInput_getBatch_Input } from '../../.mesh';
+import { getBatchResponse, queryInput_getBatch_Input } from '../../.mesh';
 import { batchDataFile } from './dataFiles';
 
-const handleBatchParameters = (args: _queryInput_getBatch_Input = {}) => {
+const handleBatchParameters = (args: queryInput_getBatch_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',

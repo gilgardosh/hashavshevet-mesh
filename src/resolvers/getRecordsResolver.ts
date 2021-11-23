@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { getRecordsResponse, _queryInput_getRecords_Input } from '../../.mesh';
+import { getRecordsResponse, queryInput_getRecords_Input } from '../../.mesh';
 import { recordsDataFile } from './dataFiles';
 
-const handleRecordsFilterParameters = (args: _queryInput_getRecords_Input = {}) => {
+const handleRecordsFilterParameters = (args: queryInput_getRecords_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',
