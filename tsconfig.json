@@ -60,5 +60,5 @@
     /* Advanced Options */
     "resolveJsonModule": true /* Include modules imported with '.json' extension */
   },
-  "exclude": ["dist", "node_modules", ".mesh"]
+  "exclude": ["dist", "node_modules", ".mesh", "dev-tests"]
 }

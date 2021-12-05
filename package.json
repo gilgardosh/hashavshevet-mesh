@@ -13,7 +13,8 @@
     "mesh:build": "mesh build",
     "generate": "yarn mesh:build",
     "dev": "ts-node ./index.ts",
-    "start": "node ./dist"
+    "start": "node ./dist",
+    "test": "ts-node ./dev-tests/e2e.ts"
   },
   "main": "dist/index.js",
   "exports": "./dist/index.js",
