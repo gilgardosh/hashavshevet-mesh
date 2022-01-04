@@ -7,7 +7,7 @@
     "prebuild": "yarn lint && yarn generate",
     "build": "tsc",
     "postbuild": "yarn copy-files",
-    "copy-files": "cp -a .mesh/ dist/.mesh/",
+    "copy-files": "cp -a .mesh/ dist/.mesh/ && cp -a json-schemas/ dist/json-schemas/",
     "prepublish": "yarn build",
     "mesh:serve": "mesh serve",
     "mesh:build": "mesh build",
@@ -36,9 +36,9 @@
   },
   "homepage": "https://github.com/gilgardosh/hashavshevet-mesh#readme",
   "dependencies": {
-    "@graphql-mesh/cli": "0.45.0-alpha-26205a4ab.0",
-    "@graphql-mesh/json-schema": "0.22.14-alpha-26205a4ab.0",
-    "@graphql-mesh/transform-resolvers-composition": "0.12.5",
+    "@graphql-mesh/cli": "0.45.0",
+    "@graphql-mesh/json-schema": "0.22.14",
+    "@graphql-mesh/transform-resolvers-composition": "0.12.6",
     "graphql": "16.2.0",
     "node-fetch": "2.6.6"
   },
