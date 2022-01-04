@@ -14,7 +14,7 @@
     "generate": "yarn mesh:build",
     "dev": "ts-node ./index.ts",
     "start": "node ./dist",
-    "test": "ts-node ./dev-tests/e2e.ts"
+    "test": "DEBUG=1 ts-node ./dev-tests/e2e.ts"
   },
   "main": "dist/index.js",
   "exports": "./dist/index.js",
@@ -36,8 +36,8 @@
   },
   "homepage": "https://github.com/gilgardosh/hashavshevet-mesh#readme",
   "dependencies": {
-    "@graphql-mesh/cli": "0.44.5",
-    "@graphql-mesh/json-schema": "0.22.13",
+    "@graphql-mesh/cli": "0.45.0-alpha-5fb42e630.0",
+    "@graphql-mesh/json-schema": "0.22.14-alpha-5fb42e630.0",
     "@graphql-mesh/transform-resolvers-composition": "0.12.5",
     "graphql": "16.2.0",
     "node-fetch": "2.6.6"

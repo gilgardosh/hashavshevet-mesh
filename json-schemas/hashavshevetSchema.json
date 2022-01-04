@@ -577,8 +577,8 @@
           "description": "Credit / Debit"
         },
         "debitOrCreditNumber": {
-          "type": "integer",
-          "enum": [-1, 1],
+          "type": "string",
+          "enum": ["-1", "1"],
           "description": "Credit (-1) / Debit (1)"
         },
         "estimatedSum": {
@@ -1050,8 +1050,8 @@
           "description": "[mainAccount] Code of the main account"
         },
         "Masav": {
-          "type": "number",
-          "enum": [0, 1],
+          "type": "string",
+          "enum": ["0", "1"],
           "description": "Transfer to MASAV. 0/1"
         },
         "MatchCurr": {

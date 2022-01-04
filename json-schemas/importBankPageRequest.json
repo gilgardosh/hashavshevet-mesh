@@ -17,8 +17,8 @@
             "description": "Account identifier (max 15 characters)"
           },
           "CreditDebit": {
-            "type": "integer",
-            "enum": [0, 1],
+            "type": "string",
+            "enum": ["0", "1"],
             "description": "Debit=1, Credit=0"
           },
           "DatF": {
