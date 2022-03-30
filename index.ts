@@ -1,5 +1,5 @@
 import { getBuiltMesh, getMeshSDK, Sdk } from './.mesh';
-import fetch from 'node-fetch';
+import https from 'https';
 
 type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
 
@@ -31,16 +31,36 @@ const login = (hashavshevetKey: string, company: string, hashavshevetUrl: string
       reject(new Error('Missing Hashavshevet user key or company ID'));
       return;
     }
-    const url = `https://${hashavshevetUrl}/createSession/${hashavshevetKey}/${company}`;
-    fetch(url)
-      .then((res) => res.text())
-      .then((authToken) => {
-        if (authToken === 'iligal token') {
-          reject(new Error('Ilegal token'));
-        }
-        resolve(authToken);
-      })
-      .catch((error) => reject(new Error(`Login fail: ${error}`)));
+    const path = `/createSession/${hashavshevetKey}/${company}`;
+
+    const req = https.request(
+      {
+        host: hashavshevetUrl,
+        path,
+        method: 'GET',
+      },
+      (res) => {
+        let data = '';
+
+        res.on('data', (chunk) => {
+          data += chunk;
+        });
+
+        res.on('end', () => {
+          if (data === 'iligal token') {
+            reject(new Error('Illegal token'));
+          }
+          resolve(data);
+        });
+      },
+    );
+
+    req.on('error', (error) => {
+      console.error(error);
+      reject(error);
+    });
+
+    req.end();
   });
   return p;
 };

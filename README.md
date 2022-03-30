@@ -18,5 +18,5 @@
 # TODOs
 - rename fields according to our convention
 - complete missing calls commented on .meshrc.ymal
-- after mesh fix, add "type": "module" to package,json and update node-fetch to LTS
+- after mesh fix, add "type": "module" to package,json (and can use node-fetch LTS for authToken req)
 - find fix for "errors" attribute conflict  between Mesh and hashavshevet
