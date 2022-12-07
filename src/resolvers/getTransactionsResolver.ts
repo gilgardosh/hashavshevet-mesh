@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { queryInput_getTransactions_Input } from '../../.mesh';
+import { queryInput_getTransactions_input_Input } from '../../.mesh';
 import { transactionsDataFile } from './dataFiles';
 
-const handleTransactionsFilterParameters = (args: queryInput_getTransactions_Input = {}) => {
+const handleTransactionsFilterParameters = (args: queryInput_getTransactions_input_Input = {}) => {
   const parametersArray = [
     {
       p_name: '__MUSTACH_P0__',
