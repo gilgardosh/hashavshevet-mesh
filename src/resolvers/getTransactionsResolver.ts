@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { getTransactionsResponse, queryInput_getTransactions_Input } from '../../.mesh';
+import { queryInput_getTransactions_Input } from '../../.mesh';
 import { transactionsDataFile } from './dataFiles';
 
 const handleTransactionsFilterParameters = (args: queryInput_getTransactions_Input = {}) => {
@@ -141,10 +141,10 @@ module.exports = (next) => async (root, args, context, info) => {
     parameters,
     datafile: transactionsDataFile,
   };
-  return next(root, args, context, info).then((data: getTransactionsResponse) => {
-    if (data.repdata?.length && !data.repdata?.[0].id) {
+  return next(root, args, context, info).then((data) => {
+    if (data.status?.repdata?.length && !data.status.repdata[0].id) {
       return null;
     }
-    return data;
+    return data.status;
   });
 };
