@@ -3,6 +3,8 @@ sources:
     handler:
       jsonSchema:
         baseUrl: 'https://{env.HASHAVSHEVET_MESH_URL}/'
+        queryStringOptions:
+          indices: true
         operationHeaders:
           Authorization: 'Bearer {env.HASHAVSHEVET_MESH_AUTH_TOKEN}'
           host: '{env.HASHAVSHEVET_MESH_URL}'
