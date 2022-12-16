@@ -10,10 +10,10 @@
     "idMax": {
       "type": "string"
     },
-    "isActiveMin": {
+    "sortCodeMin": {
       "type": "string"
     },
-    "isActiveMax": {
+    "sortCodeMax": {
       "type": "string"
     },
     "nameMin": {
