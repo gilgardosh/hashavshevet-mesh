@@ -1,6 +1,6 @@
 {
   "name": "hashavshevet-mesh",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "description": "Graphql server for wrapping Hashavshevet API",
   "scripts": {
     "lint": "eslint './src/*/**/*.{js,ts,tsx}' --quiet --fix",
