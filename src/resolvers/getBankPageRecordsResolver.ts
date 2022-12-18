@@ -69,7 +69,7 @@ module.exports = (next) => async (root, args, context, info) => {
     datafile: bankPageRecordsDataFile,
   };
   return next(root, args, context, info).then((data: getBankPageRecordsResponse) => {
-    if (data.repdata?.length && !data.repdata?.[0].id) {
+    if (data.bankPageRecords?.length && !data.bankPageRecords[0].id) {
       return null;
     }
     return data;

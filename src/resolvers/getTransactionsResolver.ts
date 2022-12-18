@@ -142,7 +142,7 @@ module.exports = (next) => async (root, args, context, info) => {
     datafile: transactionsDataFile,
   };
   return next(root, args, context, info).then((data) => {
-    if (data.status?.repdata?.length && !data.status.repdata[0].id) {
+    if (data.transactions?.length && !data.transactions[0].id) {
       return null;
     }
     return data.status;

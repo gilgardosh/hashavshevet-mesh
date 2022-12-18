@@ -2,7 +2,7 @@ sources:
   - name: Hashavshevet
     handler:
       jsonSchema:
-        baseUrl: 'https://{env.HASHAVSHEVET_MESH_URL}/'
+        endpoint: 'https://{env.HASHAVSHEVET_MESH_URL}/'
         queryStringOptions:
           indices: true
         operationHeaders:
@@ -15,12 +15,12 @@ sources:
             field: getSession
             path: /api/napi
             method: POST
-            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getSessionResopnse
+            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getSessionResponse
           - type: Query
             field: getCompanies
             path: /CompanyListToTokenApi/TokenCompanies
             method: POST
-            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getCompaniesResopnse
+            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getCompaniesResponse
 
           - type: Query
             field: getRecords
@@ -105,6 +105,37 @@ sources:
             # crmActivitiesTest
 
     transforms:
+      - hoist-field:
+          - typeName: getCompaniesResponse
+            pathConfig:
+              - status
+              - repdata
+            newFieldName: companies
+          - typeName: getRecordsResponse
+            pathConfig:
+              - status
+              - repdata
+            newFieldName: records
+          - typeName: getTransactionsResponse
+            pathConfig:
+              - status
+              - repdata
+            newFieldName: transactions
+          - typeName: getBatchResponse
+            pathConfig:
+              - status
+              - repdata
+            newFieldName: batch
+          - typeName: getBankPageRecordsResponse
+            pathConfig:
+              - status
+              - repdata
+            newFieldName: bankPageRecords
+          - typeName: getAccountsResponse
+            pathConfig:
+              - status
+              - repdata
+            newFieldName: accounts
       - resolversComposition:
           mode: bare
           compositions:
