@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { getBatchResponse, queryInput_getBatch_input_Input } from '../../.mesh';
-import { batchDataFile } from './dataFiles';
+import { batchDataFile } from './data-files';
 
 const handleBatchParameters = (args: queryInput_getBatch_input_Input = {}) => {
   const parametersArray = [
@@ -72,7 +72,7 @@ module.exports = (next) => async (root, args, context, info) => {
     datafile: batchDataFile,
   };
   return next(root, args, context, info).then((data: getBatchResponse) => {
-    if (data.repdata?.length && !data.repdata?.[0].id) {
+    if (data.status?.repdata?.length && !data.status.repdata?.[0].id) {
       return null;
     }
     return data;

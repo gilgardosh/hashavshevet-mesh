@@ -16,12 +16,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'batch')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'batch')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -31,7 +33,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status?.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
@@ -49,12 +51,14 @@ const resolvers: Resolvers = {
           info,
           key: root.transactionId,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'transaction')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'transaction')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           argsFromKeys: (transactionIds: number[]) => ({
@@ -65,7 +69,9 @@ const resolvers: Resolvers = {
           }),
           valuesFromResults: (transactionsList: getTransactionsResponse, transactionIds: number[]) =>
             transactionIds.map((transactionId) => {
-              return transactionsList.repdata?.find((transaction: Transaction) => transaction.id === transactionId);
+              return transactionsList.status?.repdata?.find(
+                (transaction: Transaction) => transaction.id === transactionId,
+              );
             }),
         });
       },
@@ -83,12 +89,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'account')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'account')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -98,7 +106,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status?.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
@@ -115,12 +123,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'counterAccount')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'counterAccount')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -130,7 +140,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status?.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
@@ -149,12 +159,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'batch')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'batch')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -164,7 +176,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status?.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
@@ -182,12 +194,14 @@ const resolvers: Resolvers = {
           info,
           key: root.id,
           selectionSet: `{
-            repdata {
-              transactionId
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'records')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                transactionId
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'records')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           argsFromKeys: (batchIds: number[]) => ({
@@ -198,7 +212,9 @@ const resolvers: Resolvers = {
           }),
           valuesFromResults: (recordsList: getRecordsResponse, batchIds: number[]) =>
             batchIds.map((transactionId) => {
-              return recordsList.repdata?.filter((record: RecordType) => record.transactionId === transactionId);
+              return recordsList.status?.repdata?.filter(
+                (record: RecordType) => record.transactionId === transactionId,
+              );
             }),
         });
       },
@@ -216,12 +232,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'creditor')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'creditor')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -231,7 +249,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status?.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
@@ -248,12 +266,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'debtor')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'debtor')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -263,7 +283,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
@@ -283,12 +303,14 @@ const resolvers: Resolvers = {
           info,
           key: root.id,
           selectionSet: `{
-            repdata {
-              batchId
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'transactions')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                batchId
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'transactions')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           argsFromKeys: (batchIds: number[]) => ({
@@ -297,9 +319,9 @@ const resolvers: Resolvers = {
               batchIdMax: Math.max.apply(null, batchIds),
             },
           }),
-          valuesFromResults: (recordsList: getRecordsResponse, batchIds: number[]) =>
+          valuesFromResults: (recordsList: getTransactionsResponse, batchIds: number[]) =>
             batchIds.map((batchId) => {
-              return recordsList.repdata?.filter((record: RecordType) => record.batchId === batchId);
+              return recordsList.status?.repdata?.filter((record: RecordType) => record.batchId === batchId);
             }),
         });
       },
@@ -319,12 +341,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'account')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'account')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -334,7 +358,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status?.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
@@ -353,12 +377,14 @@ const resolvers: Resolvers = {
           context,
           info,
           selectionSet: `{
-            repdata {
-              id
-              ${info.fieldNodes
-                .find((n) => n.name.value === 'batch')
-                .selectionSet.selections.map((s: any) => s.name?.value || '')
-                .join('\n')}
+            status {
+              repdata {
+                id
+                ${info.fieldNodes
+                  .find((n) => n.name.value === 'batch')
+                  .selectionSet.selections.map((s: any) => s.name?.value || '')
+                  .join('\n')}
+              }
             }
           }`,
           args: {
@@ -368,7 +394,7 @@ const resolvers: Resolvers = {
             },
           },
         }).then((res) => {
-          return res.repdata && res.repdata.length > 0 ? res.repdata[0] : null;
+          return res.status?.repdata && res.status.repdata.length > 0 ? res.status.repdata[0] : null;
         });
       },
     },
