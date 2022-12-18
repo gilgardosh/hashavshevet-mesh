@@ -104,6 +104,12 @@ sources:
             # crmActivities
             # crmActivitiesTest
 
+          - type: Query
+            field: getSortCodes
+            path: /ExportDataApi/exportData
+            method: POST
+            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getSortCodesResponse
+
     transforms:
       - resolversComposition:
           mode: bare
@@ -118,6 +124,8 @@ sources:
               composer: src/resolvers/getAccountsResolver
             - resolver: Query.getBankPageRecords
               composer: src/resolvers/getBankPageRecordsResolver
+            - resolver: Query.getSortCodes
+              composer: src/resolvers/getSortCodesResolver
             - resolver: Mutation.importAccounts
               composer: src/resolvers/importAccountsResolver
 serve:

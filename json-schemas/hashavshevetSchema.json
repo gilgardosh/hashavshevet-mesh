@@ -418,6 +418,35 @@
       }
     },
 
+    "getSortCodesResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [],
+          "properties": {
+            "repdata": {
+              "type": ["array", "null"],
+              "additionalItems": false,
+              "items": {
+                "$ref": "#/definitions/SortCode"
+              }
+            },
+            "errors": {
+              "type": "string",
+              "enum": ["errors", "OK"]
+            }
+          }
+        },
+        "statusCode": {
+          "type": "integer"
+        }
+      }
+    },
+
     "Transaction": {
       "type": "object",
       "additionalProperties": false,
@@ -1136,6 +1165,23 @@
         "Zip": {
           "type": "string",
           "description": "[zipcode] Zip code (max 10 characters)"
+        }
+      }
+    },
+    "SortCode": {
+      "description": "A Single Sort Code",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Sorting code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Sorting code name"
         }
       }
     }
