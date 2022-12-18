@@ -133,7 +133,7 @@ serve:
 
 sdk:
   generateOperations:
-    selectionSetDepth: 3
+    selectionSetDepth: 5
 
 require:
   - ts-node/register/transpile-only
@@ -159,6 +159,12 @@ additionalTypeDefs: |
   }
   extend type importTransactionsToBatchResponse {
     batch: Batch
+  }
+  extend type SortCode {
+    accounts: [Account]
+  }
+  extend type Account {
+    sortCode: SortCode
   }
 
 additionalResolvers:

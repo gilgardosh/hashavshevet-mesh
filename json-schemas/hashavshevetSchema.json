@@ -965,10 +965,10 @@
           "type": "string",
           "description": "Remarks (max 50 characters)"
         },
-        "sortCode": {
+        "sortCodeId": {
           "type": "integer",
           "format": "int32",
-          "description": "Sorting code"
+          "description": "Sorting code ID"
         },
         "sortCodeName": {
           "type": "string",
