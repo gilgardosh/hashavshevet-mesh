@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { getBankPageRecordsResponse, queryInput_getBankPageRecords_input_Input } from '../../.mesh';
-import { bankPageRecordsDataFile } from './dataFiles';
+import { bankPageRecordsDataFile } from './data-files';
 
 const handleBankPageRecordsParameters = (args: queryInput_getBankPageRecords_input_Input = {}) => {
   const parametersArray = [
@@ -69,7 +69,7 @@ module.exports = (next) => async (root, args, context, info) => {
     datafile: bankPageRecordsDataFile,
   };
   return next(root, args, context, info).then((data: getBankPageRecordsResponse) => {
-    if (data.repdata?.length && !data.repdata?.[0].id) {
+    if (data.status?.repdata?.length && !data.status.repdata?.[0].id) {
       return null;
     }
     return data;

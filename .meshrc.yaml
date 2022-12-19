@@ -2,7 +2,7 @@ sources:
   - name: Hashavshevet
     handler:
       jsonSchema:
-        baseUrl: 'https://{env.HASHAVSHEVET_MESH_URL}/'
+        endpoint: 'https://{env.HASHAVSHEVET_MESH_URL}/'
         queryStringOptions:
           indices: true
         operationHeaders:
@@ -15,12 +15,12 @@ sources:
             field: getSession
             path: /api/napi
             method: POST
-            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getSessionResopnse
+            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getSessionResponse
           - type: Query
             field: getCompanies
             path: /CompanyListToTokenApi/TokenCompanies
             method: POST
-            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getCompaniesResopnse
+            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getCompaniesResponse
 
           - type: Query
             field: getRecords
@@ -104,6 +104,12 @@ sources:
             # crmActivities
             # crmActivitiesTest
 
+          - type: Query
+            field: getSortCodes
+            path: /ExportDataApi/exportData
+            method: POST
+            responseSchema: ./json-schemas/hashavshevetSchema.json#/definitions/getSortCodesResponse
+
     transforms:
       - resolversComposition:
           mode: bare
@@ -118,6 +124,8 @@ sources:
               composer: src/resolvers/getAccountsResolver
             - resolver: Query.getBankPageRecords
               composer: src/resolvers/getBankPageRecordsResolver
+            - resolver: Query.getSortCodes
+              composer: src/resolvers/getSortCodesResolver
             - resolver: Mutation.importAccounts
               composer: src/resolvers/importAccountsResolver
 serve:
@@ -125,7 +133,7 @@ serve:
 
 sdk:
   generateOperations:
-    selectionSetDepth: 2
+    selectionSetDepth: 5
 
 require:
   - ts-node/register/transpile-only
@@ -151,6 +159,12 @@ additionalTypeDefs: |
   }
   extend type importTransactionsToBatchResponse {
     batch: Batch
+  }
+  extend type SortCode {
+    accounts: [Account]
+  }
+  extend type Account {
+    sortCode: SortCode
   }
 
 additionalResolvers:
