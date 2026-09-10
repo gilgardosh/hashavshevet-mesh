@@ -39,7 +39,7 @@
     "@graphql-mesh/cli": "0.82.5",
     "@graphql-mesh/json-schema": "0.37.4",
     "@graphql-mesh/transform-resolvers-composition": "0.13.3",
-    "graphql": "16.6.0"
+    "graphql": "17.0.2"
   },
   "devDependencies": {
     "@tsconfig/recommended": "1.0.1",
